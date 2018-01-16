@@ -4,11 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c rollup.config.js",
+    "flow": "flow",
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "Josh Comeau",
   "license": "MIT",
   "devDependencies": {
+    "@storybook/addon-actions": "^3.3.9",
+    "@storybook/addon-links": "^3.3.9",
+    "@storybook/addons": "^3.3.9",
+    "@storybook/react": "^3.3.9",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "flow-bin": "^0.63.1",
+    "jest": "^22.1.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^2.0.1"
@@ -16,5 +35,6 @@
   "peerDependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
-  }
+  },
+  "dependencies": {}
 }
