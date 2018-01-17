@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { PureComponent } from 'react';
 
 import { padStart } from '../../utils';
 
@@ -7,20 +7,28 @@ import Digit from '../Digit';
 
 type Props = {
   hits: number,
-  minLength?: number,
+  minLength: number,
 };
 
-export default ({ hits, minLength = 4 }: Props) => {
-  const paddedNum = padStart(hits.toString(), minLength, '0');
+class HitCounter extends PureComponent<Props> {
+  static defaultProps = {
+    minLength: 4,
+  };
 
-  return (
-    <div style={styles.wrapper}>
-      {paddedNum
-        .split('')
-        .map((digit, index) => <Digit key={index}>{digit}</Digit>)}
-    </div>
-  );
-};
+  render() {
+    const { hits, minLength } = this.props;
+
+    const paddedValue = padStart(hits.toString(), minLength, '0');
+
+    return (
+      <div style={styles.wrapper}>
+        {paddedValue
+          .split('')
+          .map((digit, index) => <Digit key={index} value={digit} />)}
+      </div>
+    );
+  }
+}
 
 const styles = {
   wrapper: {
