@@ -24,7 +24,7 @@ class HitCounter extends PureComponent<Props> {
       <div style={styles.wrapper}>
         {paddedValue
           .split('')
-          .map((digit, index) => <Digit key={index} value={digit} />)}
+          .map((digit, index) => <Digit key={index} value={Number(digit)} />)}
       </div>
     );
   }
@@ -35,3 +35,5 @@ const styles = {
     display: 'flex',
   },
 };
+
+export default HitCounter;

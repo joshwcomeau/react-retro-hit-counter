@@ -17,6 +17,13 @@ describe('Digit Helpers', () => {
       expect(actualVal).toEqual(expectedVal);
     });
 
+    it('captures a single value difference from zero', () => {
+      const expectedVal = [1];
+      const actualVal = getInBetweenDigits(0, 1);
+
+      expect(actualVal).toEqual(expectedVal);
+    });
+
     it('captures two-value difference', () => {
       const expectedVal = [5, 6];
       const actualVal = getInBetweenDigits(4, 6);
