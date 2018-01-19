@@ -1,10 +1,11 @@
 // @flow
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 
 import { getInBetweenDigits } from './Digit.helpers';
 
 type Props = {
   value: number,
+  size: number,
   flipDuration: number,
 };
 
@@ -91,48 +92,87 @@ class Digit extends PureComponent<Props, State> {
   };
 
   render() {
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
     return (
       <div style={styles.wrapper}>
-        <div style={styles.topHalf}>{this.state.currentValue}</div>
-        <div style={styles.bottomHalf}>
-          <span style={styles.bottomHalfDigit}>{this.state.currentValue}</span>
-        </div>
+        {digits.map(digit => {
+          const topStyles =
+            digit <= this.state.currentValue
+              ? styles.topHalf
+              : styles.topHalfFlipped;
+
+          return (
+            <div
+              style={{
+                position: 'relative',
+                zIndex: digit === this.state.currentValue ? 5 : 2,
+              }}
+            >
+              <div style={topStyles}>{digit}</div>
+              <div style={styles.bottomHalf}>
+                <span style={styles.bottomHalfDigit}>{digit}</span>
+              </div>
+            </div>
+          );
+        })}
+        {/*
+          The current value. When the digit isn't flipping, this is just
+          sitting there. When it IS flipping, it's behind the "old" value doing
+          the flipping
+        */}
       </div>
     );
   }
 }
 
+const topHalf = {
+  position: 'absolute',
+  zIndex: 1,
+  lineHeight: '128px',
+  height: 64,
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  background: 'black',
+  overflow: 'hidden',
+};
+
 const styles = {
   wrapper: {
     position: 'relative',
-    width: 16,
-    height: 48,
+    width: 32,
+    height: 128,
+    color: 'white',
+    fontSize: '64px',
   },
 
-  topHalf: {
-    position: 'relative',
-    zIndex: 1,
-    lineHeight: '48px',
-    height: 24,
-    overflow: 'hidden',
+  topHalf,
+  topHalfFlipped: {
+    ...topHalf,
+    transformOrigin: 'bottom center',
+    transform: 'rotateX(180deg)',
+    transition: 'transform 500ms',
   },
 
   bottomHalf: {
     position: 'absolute',
     zIndex: 2,
-    lineHeight: '48px',
-    height: 24,
-    top: 24,
+    lineHeight: '128px',
+    height: 64,
+    top: 64,
     left: 0,
     right: 0,
     bottom: 0,
     overflow: 'hidden',
+    background: 'black',
     color: 'red',
   },
 
   bottomHalfDigit: {
     display: 'inline-block',
-    transform: 'translateY(-24px)',
+    transform: 'translateY(-64px)',
   },
 };
 

@@ -8,15 +8,17 @@ import Digit from '../Digit';
 type Props = {
   hits: number,
   minLength: number,
+  size: number,
 };
 
 class HitCounter extends PureComponent<Props> {
   static defaultProps = {
     minLength: 4,
+    size: 128,
   };
 
   render() {
-    const { hits, minLength } = this.props;
+    const { hits, size, minLength } = this.props;
 
     const paddedValue = padStart(hits.toString(), minLength, '0');
 
@@ -24,7 +26,9 @@ class HitCounter extends PureComponent<Props> {
       <div style={styles.wrapper}>
         {paddedValue
           .split('')
-          .map((digit, index) => <Digit key={index} value={Number(digit)} />)}
+          .map((digit, index) => (
+            <Digit key={index} value={Number(digit)} size={size} />
+          ))}
       </div>
     );
   }
