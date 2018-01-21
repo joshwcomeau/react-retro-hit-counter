@@ -1,25 +1,16 @@
 // @flow
-
-/**
- * Produces an array of numbers between 0 and 9, between two values.
- * Excludes lower bound, includes upper bound
- *
- * @example getInBetweenDigits(3, 5) -> [4, 5]
- * @example getInBetweenDigits(7, 1) -> [8, 9, 0, 1]
- */
-export const getInBetweenDigits = (
-  currentValue: number,
-  finalValue: number,
-  digits: Array<number> = []
-) => {
-  if (currentValue === finalValue) {
-    return digits;
-  }
-
-  // Modulo 10 so that our values always range 0-9.
-  // This is necessary because we can cross that threshold;
-  // If our value foes from 8 to 2, we need to capture 9, 0, 1.
-  const nextValue = (currentValue + 1) % 10;
-
-  return getInBetweenDigits(nextValue, finalValue, [...digits, nextValue]);
+const segmentsByValue = {
+  [0]: ['a', 'b', 'c', 'd', 'e', 'f'],
+  [1]: ['b', 'c'],
+  [2]: ['a', 'b', 'g', 'e', 'd'],
+  [3]: ['a', 'b', 'g', 'c', 'd'],
+  [4]: ['f', 'g', 'b', 'c'],
+  [5]: ['a', 'f', 'g', 'c', 'd'],
+  [6]: ['a', 'f', 'g', 'c', 'd', 'e'],
+  [7]: ['a', 'b', 'c'],
+  [8]: ['a', 'b', 'c', 'd', 'e', 'f', 'g'],
+  [9]: ['a', 'b', 'c', 'd', 'f', 'g'],
 };
+
+export const isSegmentActive = (segmentId: string, value: number) =>
+  segmentsByValue[value].includes(segmentId);
