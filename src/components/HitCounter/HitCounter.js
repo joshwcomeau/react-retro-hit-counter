@@ -9,35 +9,71 @@ type Props = {
   hits: number,
   minLength: number,
   size: number,
+  segmentThickness: number,
+  backgroundColor: string,
+  segmentActiveColor: string,
+  segmentInactiveColor: string,
+  digitSpacing: number,
 };
 
 class HitCounter extends PureComponent<Props> {
   static defaultProps = {
-    minLength: 4,
+    minLength: 1,
     size: 128,
+    segmentThickness: 10,
+    segmentActiveColor: 'green',
+    segmentInactiveColor: 'rgba(0, 0, 0, 0.2)',
+    digitSpacing: 5,
   };
 
   render() {
-    const { hits, size, minLength } = this.props;
+    const {
+      hits,
+      minLength,
+      size,
+      segmentThickness,
+      segmentActiveColor,
+      segmentInactiveColor,
+      digitSpacing,
+    } = this.props;
+
+    const characterHeight = size;
+    const characterWidth = characterHeight * 0.5;
 
     const paddedValue = padStart(hits.toString(), minLength, '0');
+    const individualDigits = paddedValue.split('');
 
     return (
-      <div style={styles.wrapper}>
-        {paddedValue
-          .split('')
-          .map((digit, index) => (
-            <Digit key={index} value={Number(digit)} size={size} />
-          ))}
+      <div style={styles.wrapper(this.props)}>
+        {individualDigits.map((digit, index) => (
+          <div
+            key={index}
+            style={{
+              marginLeft: index !== 0 && digitSpacing / 2,
+              marginRight:
+                index !== individualDigits.length && digitSpacing / 2,
+            }}
+          >
+            <Digit
+              value={Number(digit)}
+              width={characterWidth}
+              height={characterHeight}
+              segmentThickness={segmentThickness}
+              segmentActiveColor={segmentActiveColor}
+              segmentInactiveColor={segmentInactiveColor}
+            />
+          </div>
+        ))}
       </div>
     );
   }
 }
 
 const styles = {
-  wrapper: {
+  wrapper: (props: Props) => ({
     display: 'flex',
-  },
+    backgroundColor: props.backgroundColor,
+  }),
 };
 
 export default HitCounter;
