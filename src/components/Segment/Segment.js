@@ -6,6 +6,7 @@ import type { SegmentId } from '../../types';
 type Props = {
   segmentId: SegmentId,
   thickness: number,
+  spacing: number,
   activeColor: string,
   inactiveColor: string,
   parentWidth: number,
@@ -16,6 +17,7 @@ type Props = {
 const Segment = ({
   segmentId,
   thickness,
+  spacing,
   activeColor,
   inactiveColor,
   parentWidth,
@@ -23,23 +25,21 @@ const Segment = ({
   isActive,
 }: Props) => {
   const halfThickness = thickness / 2;
-
   const segmentLength = parentWidth - thickness;
 
-  // Segments can either be vertical or horizontal, depending on their ID.
-  const orientation = ['a', 'd', 'g'].includes(segmentId)
-    ? 'horizontal'
-    : 'vertical';
-
   // TODO: Should this be configurable?
-  const segmentPadding = 1;
+  const animationDuration = 250;
 
-  const sharedProps = {
-    // backgroundColor: isActive ? activeColor : inactiveColor,
-  };
-  // The segments are based on seven-segment displays
-  // https://en.wikipedia.org/wiki/Seven-segment_display
-
+  // The segments are based on seven-segment displays.
+  // IDs are calculated going clockwise from the top:
+  //
+  //     A
+  //  F     B
+  //     G
+  //  E     C
+  //     D
+  //
+  // More info: https://en.wikipedia.org/wiki/Seven-segment_display
   const segments = {
     a: {
       top: 0,
@@ -92,15 +92,15 @@ const Segment = ({
             fill={color}
             style={{
               opacity: color === activeColor ? (isActive ? 1 : 0) : 1,
-              transition: 'opacity 500ms',
+              transition: `opacity ${animationDuration}ms`,
             }}
             d={`
-              M ${segmentPadding} ${halfThickness}
-              L ${halfThickness + segmentPadding} 0
-              L ${segmentLength - halfThickness - segmentPadding} 0
-              L ${segmentLength - segmentPadding} ${halfThickness}
-              L ${segmentLength - halfThickness - segmentPadding} ${thickness}
-              L ${halfThickness + segmentPadding} ${thickness}
+              M ${spacing} ${halfThickness}
+              L ${halfThickness + spacing} 0
+              L ${segmentLength - halfThickness - spacing} 0
+              L ${segmentLength - spacing} ${halfThickness}
+              L ${segmentLength - halfThickness - spacing} ${thickness}
+              L ${halfThickness + spacing} ${thickness}
             `}
           />
         ))}
@@ -108,7 +108,5 @@ const Segment = ({
     </div>
   );
 };
-
-const styles = {};
 
 export default Segment;

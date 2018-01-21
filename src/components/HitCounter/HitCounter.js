@@ -10,6 +10,7 @@ type Props = {
   minLength: number,
   size: number,
   segmentThickness: number,
+  segmentSpacing: number,
   backgroundColor: string,
   segmentActiveColor: string,
   segmentInactiveColor: string,
@@ -20,9 +21,10 @@ class HitCounter extends PureComponent<Props> {
   static defaultProps = {
     minLength: 1,
     size: 128,
-    segmentThickness: 10,
-    segmentActiveColor: 'green',
-    segmentInactiveColor: 'rgba(0, 0, 0, 0.2)',
+    segmentThickness: 6,
+    segmentSpacing: 1,
+    segmentActiveColor: '#00C853',
+    segmentInactiveColor: 'rgba(0, 0, 0, 0.08)',
     digitSpacing: 5,
   };
 

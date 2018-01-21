@@ -13,6 +13,7 @@ type Props = {
   width: number,
   height: number,
   segmentThickness: number,
+  segmentSpacing: number,
   segmentActiveColor: string,
   segmentInactiveColor: string,
 };
@@ -22,6 +23,7 @@ const Digit = ({
   width,
   height,
   segmentThickness,
+  segmentSpacing,
   segmentActiveColor,
   segmentInactiveColor,
 }: Props) => (
@@ -31,6 +33,7 @@ const Digit = ({
         key={segmentId}
         segmentId={segmentId}
         thickness={segmentThickness}
+        spacing={segmentSpacing}
         activeColor={segmentActiveColor}
         inactiveColor={segmentInactiveColor}
         parentWidth={width}
