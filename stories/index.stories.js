@@ -11,11 +11,22 @@ storiesOf('Basic', module)
   .add('543', () => <HitCounter hits={543} />)
   .add('12345', () => <HitCounter hits={12345} />);
 
-storiesOf('With Border', module).add('default', () => (
-  <RetroBorder>
-    <HitCounter hits={123} />
-  </RetroBorder>
-));
+storiesOf('With Border', module)
+  .add('empty', () => (
+    <RetroBorder>
+      <div style={{ width: '100px', height: '100px' }} />
+    </RetroBorder>
+  ))
+  .add('with HitCounter', () => (
+    <RetroBorder>
+      <HitCounter hits={123} />
+    </RetroBorder>
+  ))
+  .add('thicker, with HitCounter', () => (
+    <RetroBorder thickness={10}>
+      <HitCounter hits={123} />
+    </RetroBorder>
+  ));
 
 storiesOf('Sizes', module)
   .add('small', () => (
