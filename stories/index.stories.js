@@ -48,13 +48,12 @@ storiesOf('Colors', module)
       backgroundColor="#222222"
     />
   ))
-  .add('medium', () => (
+  .add('colourful', () => (
     <HitCounter
       hits={1234}
-      size={64}
-      segmentSpacing={1}
-      segmentThickness={6}
-      digitSpacing={4}
+      segmentActiveColor="#F50057"
+      segmentInactiveColor="#E1BEE7"
+      backgroundColor="#FCE4EC"
     />
   ))
   .add('large', () => (

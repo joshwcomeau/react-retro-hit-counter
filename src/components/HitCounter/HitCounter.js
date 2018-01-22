@@ -44,8 +44,17 @@ class HitCounter extends PureComponent<Props> {
       digitSpacing,
     } = this.props;
 
-    const characterHeight = size - segmentThickness;
-    const characterWidth = characterHeight * 0.5;
+    // HACK: Right now, each segment is exactly the same size. This means a very
+    // specific aspect ratio is necessary.
+    // The "base" aspect ratio is 0.5, since the width should be half of the
+    // height. But, there's a problem: there are 2 full segment lengths in the
+    // height, and only 1 in the width. This means that the ratio depends on
+    // the segment thickness: if the lines are really thick, the width needs to
+    // be larger.
+    const aspectRatio = 0.5 * (1 + segmentThickness / size);
+
+    const characterHeight = size;
+    const characterWidth = characterHeight * aspectRatio;
 
     const paddedValue = padStart(hits.toString(), minLength, '0');
     const individualDigits = paddedValue.split('');
@@ -53,7 +62,7 @@ class HitCounter extends PureComponent<Props> {
     const totalWidth =
       // Total width is each number's width,
       characterWidth * individualDigits.length +
-      // Plus spacing between them (eg 3x the spacing for 4 digits)
+      // plus spacing between them (eg 3x the spacing for 4 digits)
       digitSpacing * (individualDigits.length - 1);
 
     return (

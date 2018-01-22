@@ -58,7 +58,7 @@ const Segment = ({
       transformOrigin: 'top left',
     },
     d: {
-      top: segmentLength * 2,
+      bottom: 0,
       left: halfThickness,
     },
     e: {
