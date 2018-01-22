@@ -3,6 +3,80 @@ import React, { PureComponent } from 'react';
 
 import { scaleCanvas } from './RetroBorder.helpers';
 
+const GRADIENTS = {
+  outer: [
+    { stop: 0, color: '#394e6f' },
+    { stop: 0.3, color: '#7695cc' },
+    { stop: 0.6, color: '#b5c8f0' },
+    { stop: 0.9, color: '#b5c4e1' },
+    { stop: 1, color: '#98a9cb' },
+  ],
+  inner: [
+    { stop: 0, color: '#394e6f' },
+    { stop: 0.15, color: '#546f8c' },
+    { stop: 0.5, color: '#b5c8f0' },
+    { stop: 0.8, color: '#c5d8f9' },
+    { stop: 1, color: '#7991bc' },
+  ],
+};
+
+const BORDERS = [
+  {
+    side: 'top',
+    gradientStops: GRADIENTS.outer,
+    getGradientCoords: ({ width, height, thickness }) => [0, thickness, 0, 0],
+    getPoints: ({ width, height, thickness }) => [
+      [0, 0],
+      [thickness, thickness],
+      [width - thickness, thickness],
+      [width, 0],
+    ],
+  },
+  {
+    side: 'left',
+    gradientStops: GRADIENTS.outer,
+    getGradientCoords: ({ width, height, thickness }) => [thickness, 0, 0, 0],
+    getPoints: ({ width, height, thickness }) => [
+      [0, 0],
+      [thickness, thickness],
+      [thickness, height - thickness],
+      [0, height],
+    ],
+  },
+  {
+    side: 'right',
+    gradientStops: GRADIENTS.inner,
+    getGradientCoords: ({ width, height, thickness }) => [
+      width,
+      0,
+      width - thickness,
+      0,
+    ],
+    getPoints: ({ width, height, thickness }) => [
+      [width, 0],
+      [width - thickness, thickness],
+      [width - thickness, height - thickness],
+      [width, height],
+    ],
+  },
+  {
+    side: 'bottom',
+    gradientStops: GRADIENTS.inner,
+    getGradientCoords: ({ width, height, thickness }) => [
+      0,
+      height,
+      0,
+      height - thickness,
+    ],
+    getPoints: ({ width, height, thickness }) => [
+      [0, height],
+      [thickness, height - thickness],
+      [width - thickness, height - thickness],
+      [width, height],
+    ],
+  },
+];
+
 type Props = {
   width: number,
   height: number,
@@ -47,75 +121,33 @@ class RetroBorder extends PureComponent<Props, State> {
     let { thickness } = this.props;
     const { width, height } = this.state;
 
-    const topGradient = this.ctx.createLinearGradient(0, thickness, 0, 0);
-    topGradient.addColorStop(0, '#394e6f');
-    topGradient.addColorStop(0.3, '#7695cc');
-    topGradient.addColorStop(0.6, '#b5c8f0');
-    topGradient.addColorStop(0.9, '#b5c4e1');
-    topGradient.addColorStop(1, '#98a9cb');
-    this.ctx.beginPath();
-    this.ctx.moveTo(0, 0);
-    this.ctx.lineTo(thickness, thickness);
-    this.ctx.lineTo(width - thickness, thickness);
-    this.ctx.lineTo(width, 0);
-    this.ctx.closePath();
-    this.ctx.fillStyle = topGradient;
-    this.ctx.fill();
+    if (typeof width !== 'number' || typeof height !== 'number') {
+      return;
+    }
 
-    const leftGradient = this.ctx.createLinearGradient(thickness, 0, 0, 0);
-    leftGradient.addColorStop(0, '#394e6f');
-    leftGradient.addColorStop(0.3, '#7695cc');
-    leftGradient.addColorStop(0.6, '#b5c8f0');
-    leftGradient.addColorStop(0.9, '#b5c4e1');
-    leftGradient.addColorStop(1, '#98a9cb');
-    this.ctx.beginPath();
-    this.ctx.moveTo(0, 0);
-    this.ctx.lineTo(thickness, thickness);
-    this.ctx.lineTo(thickness, height - thickness);
-    this.ctx.lineTo(0, height);
-    this.ctx.closePath();
-    this.ctx.fillStyle = leftGradient;
-    this.ctx.fill();
+    BORDERS.forEach(({ gradientStops, getGradientCoords, getPoints }) => {
+      const data = { width, height, thickness };
 
-    const rightGradient = this.ctx.createLinearGradient(
-      width,
-      0,
-      width - thickness,
-      0
-    );
-    rightGradient.addColorStop(0, '#394e6f');
-    rightGradient.addColorStop(0.15, '#546f8c');
-    leftGradient.addColorStop(0.5, '#b5c8f0');
-    rightGradient.addColorStop(0.8, '#c5d8f9');
-    rightGradient.addColorStop(1, '#7991bc');
-    this.ctx.beginPath();
-    this.ctx.moveTo(width, 0);
-    this.ctx.lineTo(width - thickness, thickness);
-    this.ctx.lineTo(width - thickness, height - thickness);
-    this.ctx.lineTo(width, height);
-    this.ctx.closePath();
-    this.ctx.fillStyle = rightGradient;
-    this.ctx.fill();
+      const gradient = this.ctx.createLinearGradient(
+        ...getGradientCoords(data)
+      );
 
-    const bottomGradient = this.ctx.createLinearGradient(
-      0,
-      height,
-      0,
-      height - thickness
-    );
-    bottomGradient.addColorStop(0, '#394e6f');
-    bottomGradient.addColorStop(0.3, '#7695cc');
-    bottomGradient.addColorStop(0.6, '#b5c8f0');
-    bottomGradient.addColorStop(0.9, '#b5c4e1');
-    bottomGradient.addColorStop(1, '#98a9cb');
-    this.ctx.beginPath();
-    this.ctx.moveTo(0, height);
-    this.ctx.lineTo(thickness, height - thickness);
-    this.ctx.lineTo(width - thickness, height - thickness);
-    this.ctx.lineTo(width, height);
-    this.ctx.closePath();
-    this.ctx.fillStyle = bottomGradient;
-    this.ctx.fill();
+      gradientStops.forEach(({ stop, color }) =>
+        gradient.addColorStop(stop, color)
+      );
+
+      const [startingPoint, ...connectedPoints] = getPoints(data);
+
+      this.ctx.beginPath();
+      this.ctx.moveTo(...startingPoint);
+
+      connectedPoints.forEach(point => this.ctx.lineTo(...point));
+
+      this.ctx.closePath();
+
+      this.ctx.fillStyle = gradient;
+      this.ctx.fill();
+    });
   };
 
   render() {
