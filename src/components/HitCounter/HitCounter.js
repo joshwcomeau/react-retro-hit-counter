@@ -16,8 +16,6 @@ type Props = {
   segmentSpacing: number,
   segmentActiveColor: string,
   segmentInactiveColor: string,
-  withBorder: boolean,
-  borderWidth: number,
 };
 
 class HitCounter extends PureComponent<Props> {
@@ -31,7 +29,6 @@ class HitCounter extends PureComponent<Props> {
     backgroundColor: '#222222',
     digitSpacing: 3,
     padding: 4,
-    borderWidth: 5,
   };
 
   render() {
@@ -46,8 +43,6 @@ class HitCounter extends PureComponent<Props> {
       segmentActiveColor,
       segmentInactiveColor,
       digitSpacing,
-      withBorder,
-      borderWidth,
     } = this.props;
 
     // HACK: Right now, each segment is exactly the same size. This means a very
@@ -71,7 +66,7 @@ class HitCounter extends PureComponent<Props> {
       // plus spacing between them (eg 3x the spacing for 4 digits)
       digitSpacing * (individualDigits.length - 1);
 
-    const counter = (
+    return (
       <div style={styles.wrapper(backgroundColor, padding, totalWidth)}>
         {individualDigits.map((digit, index) => (
           <Digit
@@ -86,34 +81,8 @@ class HitCounter extends PureComponent<Props> {
         ))}
       </div>
     );
-
-    if (!withBorder) {
-      return counter;
-    }
-
-    return (
-      <div style={styles.withBorderWrapper(borderWidth)}>
-        <div style={styles.counterWrapper()}>{counter}</div>
-
-        <div style={styles.borderPieces()}>
-          <div style={styles.borderTop(borderWidth)} />
-          <div style={styles.borderLeft(borderWidth)} />
-          <div style={styles.borderRight(borderWidth)} />
-          <div style={styles.borderBottom(borderWidth)} />
-        </div>
-      </div>
-    );
   }
 }
-
-const sharedBorderStyle = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  borderStyle: 'solid',
-};
 
 const styles = {
   wrapper: (backgroundColor, padding, width) => ({
@@ -135,29 +104,6 @@ const styles = {
     position: 'relative',
     zIndex: 1,
   }),
-
-  borderPieces: () => ({
-    position: 'absolute',
-    zIndex: 0,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  }),
-
-  borderTop: borderWidth => ({
-    ...sharedBorderStyle,
-    borderWidth: `${20}px`,
-    borderColor: 'red',
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderBottomColor: 'transparent',
-    // borderImage: 'linear-gradient(to bottom, red, green, blue) 1% 100%',
-  }),
-
-  borderLeft: borderWidth => ({}),
-  borderRight: borderWidth => ({}),
-  borderBottom: borderWidth => ({}),
 };
 
 export default HitCounter;

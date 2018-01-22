@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import HitCounter from '../src/index.js';
+import RetroBorder from '../src/components/RetroBorder';
 
 import AutoIncrement from './helpers/AutoIncrement';
 
@@ -11,7 +12,9 @@ storiesOf('Basic', module)
   .add('12345', () => <HitCounter hits={12345} />);
 
 storiesOf('With Border', module).add('default', () => (
-  <HitCounter hits={123} withBorder />
+  <RetroBorder>
+    <HitCounter hits={123} />
+  </RetroBorder>
 ));
 
 storiesOf('Sizes', module)
