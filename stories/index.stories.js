@@ -17,14 +17,27 @@ storiesOf('With Border', module)
       <div style={{ width: '100px', height: '100px' }} />
     </RetroBorder>
   ))
-  .add('with HitCounter', () => (
+  .add('default', () => (
     <RetroBorder>
-      <HitCounter hits={123} />
+      <HitCounter minLength={6} hits={12345} />
     </RetroBorder>
   ))
-  .add('thicker, with HitCounter', () => (
+  .add('default, with glow', () => (
+    <RetroBorder glowColor={HitCounter.defaultProps.segmentActiveColor}>
+      <HitCounter minLength={6} hits={12345} />
+    </RetroBorder>
+  ))
+  .add('thicker', () => (
     <RetroBorder thickness={10}>
-      <HitCounter hits={123} />
+      <HitCounter minLength={6} hits={12345} />
+    </RetroBorder>
+  ))
+  .add('thicker, with glow', () => (
+    <RetroBorder
+      glowColor={HitCounter.defaultProps.segmentActiveColor}
+      thickness={10}
+    >
+      <HitCounter minLength={6} hits={12345} />
     </RetroBorder>
   ));
 

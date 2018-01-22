@@ -25,7 +25,7 @@ class HitCounter extends PureComponent<Props> {
     segmentThickness: 4,
     segmentSpacing: 0.5,
     segmentActiveColor: '#76FF03',
-    segmentInactiveColor: '#33691E',
+    segmentInactiveColor: '#315324',
     backgroundColor: '#222222',
     digitSpacing: 3,
     padding: 4,
@@ -45,13 +45,19 @@ class HitCounter extends PureComponent<Props> {
       digitSpacing,
     } = this.props;
 
-    // HACK: Right now, each segment is exactly the same size. This means a very
-    // specific aspect ratio is necessary.
-    // The "base" aspect ratio is 0.5, since the width should be half of the
-    // height. But, there's a problem: there are 2 full segment lengths in the
-    // height, and only 1 in the width. This means that the ratio depends on
-    // the segment thickness: if the lines are really thick, the width needs to
-    // be larger.
+    // NOTE: Each segment in each digit is exactly the same size. This means a
+    // very specific aspect ratio is necessary.
+    //
+    // The "base" aspect ratio is 0.5: there are 2 vertical segments and 1
+    // horizontal one, so the width should be half of the height.
+    // This gets messed up with segment spacing: both the horizontal and
+    // vertical directions have 1 `segmentThickness` worth of additional space.
+    // The vertical ('side') segments don't quite reach the top/bottom, and the
+    // horizontal ones don't quite reach the sides.
+    //
+    // To fix this, we need to multiply the base aspect ratio, 0.5, by the ratio
+    // between height and segment thickness. The thicker the segment is, the
+    // further from that 0.5 default we get.
     const aspectRatio = 0.5 * (1 + segmentThickness / size);
 
     const characterHeight = size;

@@ -1,7 +1,25 @@
 // @flow
+/**
+ * Add a 90s Retro Border to any children!
+ * Uses Canvas, since not all border sides are the same. As such, it may look
+ * more complicated than you expected, but this is necessary to get the right
+ * aesthetic.
+ */
 import React, { PureComponent } from 'react';
 
 import { scaleCanvas } from './RetroBorder.helpers';
+
+type Props = {
+  thickness: number,
+  glowColor: string,
+  glowStrength: number,
+  children: React$Node,
+};
+
+type State = {
+  width?: number,
+  height?: number,
+};
 
 const GRADIENTS = {
   outer: [
@@ -22,7 +40,7 @@ const GRADIENTS = {
 
 const BORDERS = [
   {
-    side: 'top',
+    // top
     gradientStops: GRADIENTS.outer,
     getGradientCoords: ({ width, height, thickness }) => [0, thickness, 0, 0],
     getPoints: ({ width, height, thickness }) => [
@@ -33,7 +51,7 @@ const BORDERS = [
     ],
   },
   {
-    side: 'left',
+    // left
     gradientStops: GRADIENTS.outer,
     getGradientCoords: ({ width, height, thickness }) => [thickness, 0, 0, 0],
     getPoints: ({ width, height, thickness }) => [
@@ -44,7 +62,7 @@ const BORDERS = [
     ],
   },
   {
-    side: 'right',
+    // right
     gradientStops: GRADIENTS.inner,
     getGradientCoords: ({ width, height, thickness }) => [
       width,
@@ -60,7 +78,7 @@ const BORDERS = [
     ],
   },
   {
-    side: 'bottom',
+    // bottom
     gradientStops: GRADIENTS.inner,
     getGradientCoords: ({ width, height, thickness }) => [
       0,
@@ -77,27 +95,15 @@ const BORDERS = [
   },
 ];
 
-type Props = {
-  width: number,
-  height: number,
-  thickness: number,
-  children: React$Node,
-};
-
-type State = {
-  width?: number,
-  height?: number,
-};
-
 class RetroBorder extends PureComponent<Props, State> {
-  static defaultProps = {
-    thickness: 6,
-  };
-
   state = {};
-
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
+
+  static defaultProps = {
+    glowStrength: 0.4,
+    thickness: 7,
+  };
 
   componentDidUpdate() {
     this.draw();
@@ -107,6 +113,7 @@ class RetroBorder extends PureComponent<Props, State> {
     if (!canvas) {
       return;
     }
+
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
 
@@ -151,10 +158,28 @@ class RetroBorder extends PureComponent<Props, State> {
   };
 
   render() {
+    const { thickness, glowStrength, glowColor, children } = this.props;
+    const { width, height } = this.state;
+
+    const shouldShowGlow = glowStrength > 0 && glowColor;
+
     return (
       <div style={styles.wrapper(this.props)}>
+        <div style={styles.childWrapper()}>{children}</div>
+
+        {shouldShowGlow && (
+          <div
+            style={styles.glow(
+              glowStrength,
+              glowColor,
+              thickness,
+              width,
+              height
+            )}
+          />
+        )}
+
         <canvas style={styles.canvas()} ref={this.handleRef} />
-        {this.props.children}
       </div>
     );
   }
@@ -166,8 +191,27 @@ const styles = {
     position: 'relative',
     padding: thickness,
   }),
+
+  childWrapper: () => ({
+    position: 'relative',
+    zIndex: 3,
+  }),
+
+  glow: (strength, color, thickness, width, height) => ({
+    position: 'absolute',
+    zIndex: 2,
+    top: thickness - thickness * 0.25,
+    left: thickness - thickness * 0.25,
+    right: thickness,
+    bottom: thickness,
+    background: color,
+    filter: `blur(${thickness * 0.25}px)`,
+    opacity: strength,
+  }),
+
   canvas: () => ({
     position: 'absolute',
+    zIndex: 1,
     top: 0,
     left: 0,
     right: 0,
