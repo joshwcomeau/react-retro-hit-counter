@@ -10,6 +10,10 @@ storiesOf('Basic', module)
   .add('543', () => <HitCounter hits={543} />)
   .add('12345', () => <HitCounter hits={12345} />);
 
+storiesOf('With Border', module).add('default', () => (
+  <HitCounter hits={123} withBorder />
+));
+
 storiesOf('Sizes', module)
   .add('small', () => (
     <HitCounter
@@ -40,29 +44,20 @@ storiesOf('Sizes', module)
   ));
 
 storiesOf('Colors', module)
-  .add('dark', () => (
+  .add('light', () => (
     <HitCounter
       hits={1234}
-      segmentActiveColor="#76FF03"
-      segmentInactiveColor="#33691E"
-      backgroundColor="#222222"
+      segmentActiveColor="#00C853"
+      segmentInactiveColor="rgba(0, 0, 0, 0.08)"
+      backgroundColor="white"
     />
   ))
-  .add('colourful', () => (
+  .add('blue', () => (
     <HitCounter
       hits={1234}
-      segmentActiveColor="#F50057"
-      segmentInactiveColor="#E1BEE7"
-      backgroundColor="#FCE4EC"
-    />
-  ))
-  .add('large', () => (
-    <HitCounter
-      hits={1234}
-      size={128}
-      segmentSpacing={1}
-      segmentThickness={10}
-      digitSpacing={6}
+      segmentActiveColor="#82B1FF"
+      segmentInactiveColor="#1565C0"
+      backgroundColor="#0D47A1"
     />
   ));
 
