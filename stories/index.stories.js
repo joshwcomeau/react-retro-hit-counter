@@ -88,6 +88,38 @@ storiesOf('Colors', module)
     />
   ));
 
+storiesOf('Thicknesses', module)
+  .add('2', () => (
+    <RetroBorder>
+      <HitCounter hits={1337} segmentThickness={2} />
+    </RetroBorder>
+  ))
+  .add('4', () => (
+    <RetroBorder>
+      <HitCounter hits={1337} segmentThickness={4} />
+    </RetroBorder>
+  ))
+  .add('6', () => (
+    <RetroBorder>
+      <HitCounter hits={1337} segmentThickness={6} />
+    </RetroBorder>
+  ))
+  .add('8', () => (
+    <RetroBorder>
+      <HitCounter hits={1337} segmentThickness={8} />
+    </RetroBorder>
+  ))
+  .add('10', () => (
+    <RetroBorder>
+      <HitCounter hits={1337} segmentThickness={10} />
+    </RetroBorder>
+  ))
+  .add('12', () => (
+    <RetroBorder>
+      <HitCounter hits={1337} segmentThickness={12} />
+    </RetroBorder>
+  ));
+
 storiesOf('Incrementing', module)
   .add('From 0', () => (
     <AutoIncrement>{val => <HitCounter hits={val} />}</AutoIncrement>
