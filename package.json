@@ -1,5 +1,7 @@
 {
   "name": "react-retro-hit-counter",
+  "author": "Josh Comeau <joshwcomeau@gmail.com>",
+  "license": "MIT",
   "version": "0.0.1",
   "description": "Go back in time with this retro 90's hit counter.",
   "main": "dist/react-retro-hit-counter.cjs.js",
@@ -11,14 +13,10 @@
     "flow": "flow",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prebuild": "flow check && npm run test",
+    "prepublishOnly": "npm run build"
   },
-  "author": "Josh Comeau <joshwcomeau@gmail.com>",
-  "license": "MIT",
-  "keywords": [
-    "react",
-    "react-dom"
-  ],
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.9",
     "@storybook/addon-links": "^3.3.9",
@@ -46,5 +44,6 @@
     "react": ">15.3 || 16.x",
     "react-dom": ">15.3 || 16.x"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "keywords": ["react", "react-dom"]
 }
