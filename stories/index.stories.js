@@ -1,16 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import HitCounter from '../src/index.js';
+import RetroHitCounter from '../src/index.js';
 import RetroBorder from '../src/components/RetroBorder';
 
 import AutoIncrement from './helpers/AutoIncrement';
 import AsyncSimulator from './helpers/AsyncSimulator';
 
 storiesOf('Basic', module)
-  .add('0', () => <HitCounter hits={0} />)
-  .add('543', () => <HitCounter hits={543} />)
-  .add('12345', () => <HitCounter hits={12345} />);
+  .add('0', () => <RetroHitCounter hits={0} />)
+  .add('543', () => <RetroHitCounter hits={543} />)
+  .add('12345', () => <RetroHitCounter hits={12345} />);
 
 storiesOf('RetroBorder alone', module).add('hello world', () => (
   <RetroBorder width={200} height={100}>
@@ -19,16 +19,26 @@ storiesOf('RetroBorder alone', module).add('hello world', () => (
 ));
 
 storiesOf('Border and Glow', module)
-  .add('withBorder', () => <HitCounter withBorder minLength={6} hits={12345} />)
-  .add('withGlow', () => <HitCounter withGlow minLength={6} hits={12345} />)
+  .add('withBorder', () => (
+    <RetroHitCounter withBorder minLength={6} hits={12345} />
+  ))
+  .add('withGlow', () => (
+    <RetroHitCounter withGlow minLength={6} hits={12345} />
+  ))
   .add('with both', () => (
-    <HitCounter withBorder withGlow minLength={6} hits={12345} />
+    <RetroHitCounter withBorder withGlow minLength={6} hits={12345} />
   ))
   .add('with large glow', () => (
-    <HitCounter withBorder withGlow glowSize={4} minLength={6} hits={12345} />
+    <RetroHitCounter
+      withBorder
+      withGlow
+      glowSize={4}
+      minLength={6}
+      hits={12345}
+    />
   ))
   .add('with large border and glow', () => (
-    <HitCounter
+    <RetroHitCounter
       withBorder
       withGlow
       borderThickness={12}
@@ -38,7 +48,7 @@ storiesOf('Border and Glow', module)
     />
   ))
   .add('with different segment color', () => (
-    <HitCounter
+    <RetroHitCounter
       withBorder
       withGlow
       minLength={6}
@@ -49,7 +59,7 @@ storiesOf('Border and Glow', module)
 
 storiesOf('Sizes', module)
   .add('small', () => (
-    <HitCounter
+    <RetroHitCounter
       hits={1234}
       size={32}
       segmentSpacing={0.5}
@@ -58,7 +68,7 @@ storiesOf('Sizes', module)
     />
   ))
   .add('medium', () => (
-    <HitCounter
+    <RetroHitCounter
       hits={1234}
       size={64}
       segmentSpacing={1}
@@ -67,7 +77,7 @@ storiesOf('Sizes', module)
     />
   ))
   .add('large', () => (
-    <HitCounter
+    <RetroHitCounter
       hits={1234}
       size={128}
       segmentSpacing={1}
@@ -78,7 +88,7 @@ storiesOf('Sizes', module)
 
 storiesOf('Colors', module)
   .add('light', () => (
-    <HitCounter
+    <RetroHitCounter
       hits={1234}
       segmentActiveColor="#00C853"
       segmentInactiveColor="rgba(0, 0, 0, 0.08)"
@@ -86,7 +96,7 @@ storiesOf('Colors', module)
     />
   ))
   .add('blue', () => (
-    <HitCounter
+    <RetroHitCounter
       hits={1234}
       segmentActiveColor="#82B1FF"
       segmentInactiveColor="#1565C0"
@@ -94,7 +104,7 @@ storiesOf('Colors', module)
     />
   ))
   .add('transparent background (null)', () => (
-    <HitCounter
+    <RetroHitCounter
       hits={1234}
       segmentActiveColor="transparent"
       segmentInactiveColor="transparent"
@@ -102,7 +112,7 @@ storiesOf('Colors', module)
     />
   ))
   .add('transparent background ("transparent")', () => (
-    <HitCounter
+    <RetroHitCounter
       hits={1234}
       segmentActiveColor="black"
       segmentInactiveColor="transparent"
@@ -113,58 +123,58 @@ storiesOf('Colors', module)
 storiesOf('Thicknesses', module)
   .add('2', () => (
     <RetroBorder>
-      <HitCounter hits={1337} segmentThickness={2} />
+      <RetroHitCounter hits={1337} segmentThickness={2} />
     </RetroBorder>
   ))
   .add('4', () => (
     <RetroBorder>
-      <HitCounter hits={1337} segmentThickness={4} />
+      <RetroHitCounter hits={1337} segmentThickness={4} />
     </RetroBorder>
   ))
   .add('6', () => (
     <RetroBorder>
-      <HitCounter hits={1337} segmentThickness={6} />
+      <RetroHitCounter hits={1337} segmentThickness={6} />
     </RetroBorder>
   ))
   .add('8', () => (
     <RetroBorder>
-      <HitCounter hits={1337} segmentThickness={8} />
+      <RetroHitCounter hits={1337} segmentThickness={8} />
     </RetroBorder>
   ))
   .add('10', () => (
     <RetroBorder>
-      <HitCounter hits={1337} segmentThickness={10} />
+      <RetroHitCounter hits={1337} segmentThickness={10} />
     </RetroBorder>
   ))
   .add('12', () => (
     <RetroBorder>
-      <HitCounter hits={1337} segmentThickness={12} />
+      <RetroHitCounter hits={1337} segmentThickness={12} />
     </RetroBorder>
   ));
 
 storiesOf('Incrementing', module)
   .add('From 0', () => (
-    <AutoIncrement>{val => <HitCounter hits={val} />}</AutoIncrement>
+    <AutoIncrement>{val => <RetroHitCounter hits={val} />}</AutoIncrement>
   ))
   .add('From 500', () => (
     <AutoIncrement initialValue={500}>
-      {val => <HitCounter hits={val} />}
+      {val => <RetroHitCounter hits={val} />}
     </AutoIncrement>
   ))
   .add('From 999', () => (
     <AutoIncrement initialValue={999}>
-      {val => <HitCounter hits={val} />}
+      {val => <RetroHitCounter hits={val} />}
     </AutoIncrement>
   ));
 
 storiesOf('Async data', module)
   .add('within 4 digits', () => (
     <AsyncSimulator initialData={{ hits: 0 }} loadedData={{ hits: 514 }}>
-      {({ hits }) => <HitCounter withBorder hits={hits} />}
+      {({ hits }) => <RetroHitCounter withBorder hits={hits} />}
     </AsyncSimulator>
   ))
   .add('from 4 to 6 digits', () => (
     <AsyncSimulator initialData={{ hits: 0 }} loadedData={{ hits: 123456 }}>
-      {({ hits }) => <HitCounter withBorder hits={hits} />}
+      {({ hits }) => <RetroHitCounter withBorder hits={hits} />}
     </AsyncSimulator>
   ));

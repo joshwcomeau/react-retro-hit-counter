@@ -24,7 +24,7 @@ type Props = {
   glowStrength: number,
 };
 
-class HitCounter extends PureComponent<Props> {
+class RetroHitCounter extends PureComponent<Props> {
   static defaultProps = {
     minLength: 4,
     size: 40,
@@ -177,4 +177,4 @@ const styles = {
   }),
 };
 
-export default HitCounter;
+export default RetroHitCounter;
