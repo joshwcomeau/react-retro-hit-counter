@@ -1,7 +1,7 @@
 // @flow
 import { injectGlobal } from 'styled-components';
 
-import backgroundImage from './images/background-stars.jpeg';
+import backgroundImage from './images/bg-stars.gif';
 
 injectGlobal`
   *,
