@@ -167,10 +167,18 @@ Width, in pixels, of the border. Only used if `withBorder` is set to `true`.
 
 If desired, a soft glow can be emitted from the hit counter. This works especially well with the border. The color of the glow is based on `segmentActiveColor`.
 
+##### `glowSize`
+
+| **Type:** | **Default Value** |
+| --------- | ----------------- |
+| `number`  | `2`               |
+
+This parameter controls both the negative margin of the glow, as well as the blur amount. Larger values take up more space, but are also more of a soft blur.
+
 ##### `glowStrength`
 
 | **Type:** | **Default Value** |
 | --------- | ----------------- |
-| `number`  | `0.5`             |
+| `number`  | `0.4`             |
 
 The opacity of the glow. Only used if `withGlow` is set to `true`.

@@ -10,15 +10,17 @@ type Props = {
   hits: number,
   minLength: number,
   size: number,
-  backgroundColor: string,
   padding: number,
   digitSpacing: number,
   segmentThickness: number,
   segmentSpacing: number,
   segmentActiveColor: string,
   segmentInactiveColor: string,
+  backgroundColor: string,
   withBorder: boolean,
   borderThickness: number,
+  withGlow: boolean,
+  glowSize: number,
   glowStrength: number,
 };
 
@@ -26,16 +28,18 @@ class HitCounter extends PureComponent<Props> {
   static defaultProps = {
     minLength: 4,
     size: 40,
+    padding: 4,
+    digitSpacing: 3,
     segmentThickness: 4,
     segmentSpacing: 0.5,
     segmentActiveColor: '#76FF03',
     segmentInactiveColor: '#315324',
     backgroundColor: '#222222',
-    digitSpacing: 3,
-    padding: 4,
     withBorder: false,
-    borderThickness: 6,
-    glowStrength: 0.5,
+    borderThickness: 7,
+    withGlow: false,
+    glowSize: 2,
+    glowStrength: 0.4,
   };
 
   render() {
@@ -52,6 +56,8 @@ class HitCounter extends PureComponent<Props> {
       digitSpacing,
       withBorder,
       borderThickness,
+      withGlow,
+      glowSize,
       glowStrength,
     } = this.props;
 
@@ -82,20 +88,34 @@ class HitCounter extends PureComponent<Props> {
       // plus spacing between them (eg 3x the spacing for 4 digits)
       digitSpacing * (individualDigits.length - 1);
 
+    const shouldShowGlow = withGlow && glowStrength > 0;
+
     const counter = (
-      <div style={styles.wrapper(backgroundColor, padding, totalWidth)}>
-        {individualDigits.map((digit, index) => (
-          <Digit
-            key={index}
-            value={Number(digit)}
-            width={characterWidth}
-            height={characterHeight}
-            segmentThickness={segmentThickness}
-            segmentSpacing={segmentSpacing}
-            segmentActiveColor={segmentActiveColor}
-            segmentInactiveColor={segmentInactiveColor}
+      <div style={styles.wrapper()}>
+        <div style={styles.counter(backgroundColor, padding, totalWidth)}>
+          {individualDigits.map((digit, index) => (
+            <Digit
+              key={index}
+              value={Number(digit)}
+              width={characterWidth}
+              height={characterHeight}
+              segmentThickness={segmentThickness}
+              segmentSpacing={segmentSpacing}
+              segmentActiveColor={segmentActiveColor}
+              segmentInactiveColor={segmentInactiveColor}
+            />
+          ))}
+        </div>
+
+        {shouldShowGlow && (
+          <div
+            style={styles.glow({
+              strength: glowStrength,
+              color: segmentActiveColor,
+              size: glowSize,
+            })}
           />
-        ))}
+        )}
       </div>
     );
 
@@ -118,8 +138,14 @@ class HitCounter extends PureComponent<Props> {
 }
 
 const styles = {
-  wrapper: (backgroundColor, padding, width) => ({
-    display: 'inline-flex',
+  wrapper: () => ({
+    position: 'relative',
+    display: 'inline-block',
+  }),
+  counter: (backgroundColor, padding, width) => ({
+    position: 'relative',
+    zIndex: 2,
+    display: 'flex',
     justifyContent: 'space-between',
     width,
     backgroundColor,
@@ -136,6 +162,18 @@ const styles = {
   counterWrapper: () => ({
     position: 'relative',
     zIndex: 1,
+  }),
+
+  glow: ({ strength, color, size }) => ({
+    position: 'absolute',
+    zIndex: 1,
+    top: -size,
+    left: -size,
+    right: -size,
+    bottom: -size,
+    background: color,
+    filter: `blur(${size}px)`,
+    opacity: strength,
   }),
 };
 

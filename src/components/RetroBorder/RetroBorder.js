@@ -13,8 +13,6 @@ type Props = {
   width: number,
   height: number,
   thickness: number,
-  glowColor: string,
-  glowStrength: number,
   children: React$Node,
 };
 
@@ -98,7 +96,6 @@ class RetroBorder extends PureComponent<Props> {
   ctx: CanvasRenderingContext2D;
 
   static defaultProps = {
-    glowStrength: 0.4,
     thickness: 7,
   };
 
@@ -161,34 +158,11 @@ class RetroBorder extends PureComponent<Props> {
   };
 
   render() {
-    const {
-      width,
-      height,
-      thickness,
-      glowStrength,
-      glowColor,
-      children,
-    } = this.props;
-
-    console.log('Render', width, height);
-
-    const shouldShowGlow = glowStrength > 0 && glowColor;
+    const { width, height, thickness, children } = this.props;
 
     return (
       <div style={styles.wrapper(this.props)}>
         <div style={styles.childWrapper()}>{children}</div>
-
-        {shouldShowGlow && (
-          <div
-            style={styles.glow(
-              glowStrength,
-              glowColor,
-              thickness,
-              width,
-              height
-            )}
-          />
-        )}
 
         <canvas
           width={width}
@@ -211,18 +185,6 @@ const styles = {
   childWrapper: () => ({
     position: 'relative',
     zIndex: 3,
-  }),
-
-  glow: (strength, color, thickness, width, height) => ({
-    position: 'absolute',
-    zIndex: 2,
-    top: thickness - thickness * 0.25,
-    left: thickness - thickness * 0.25,
-    right: thickness,
-    bottom: thickness,
-    background: color,
-    filter: `blur(${thickness * 0.25}px)`,
-    opacity: strength,
   }),
 
   canvas: ({ width, height }) => ({

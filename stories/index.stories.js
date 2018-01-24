@@ -18,29 +18,33 @@ storiesOf('RetroBorder alone', module).add('hello world', () => (
   </RetroBorder>
 ));
 
-storiesOf('With Border', module)
-  .add('default', () => (
-    <RetroBorder>
-      <HitCounter withBorder minLength={6} hits={12345} />
-    </RetroBorder>
+storiesOf('Border and Glow', module)
+  .add('withBorder', () => <HitCounter withBorder minLength={6} hits={12345} />)
+  .add('withGlow', () => <HitCounter withGlow minLength={6} hits={12345} />)
+  .add('with both', () => (
+    <HitCounter withBorder withGlow minLength={6} hits={12345} />
   ))
-  .add('default, with glow', () => (
-    <RetroBorder glowColor={HitCounter.defaultProps.segmentActiveColor}>
-      <HitCounter minLength={6} hits={12345} />
-    </RetroBorder>
+  .add('with large glow', () => (
+    <HitCounter withBorder withGlow glowSize={4} minLength={6} hits={12345} />
   ))
-  .add('thicker', () => (
-    <RetroBorder thickness={10}>
-      <HitCounter minLength={6} hits={12345} />
-    </RetroBorder>
+  .add('with large border and glow', () => (
+    <HitCounter
+      withBorder
+      withGlow
+      borderThickness={12}
+      glowSize={5}
+      minLength={6}
+      hits={12345}
+    />
   ))
-  .add('thicker, with glow', () => (
-    <RetroBorder
-      glowColor={HitCounter.defaultProps.segmentActiveColor}
-      thickness={10}
-    >
-      <HitCounter minLength={6} hits={12345} />
-    </RetroBorder>
+  .add('with different segment color', () => (
+    <HitCounter
+      withBorder
+      withGlow
+      minLength={6}
+      segmentActiveColor="#00FFFF"
+      hits={12345}
+    />
   ));
 
 storiesOf('Sizes', module)
