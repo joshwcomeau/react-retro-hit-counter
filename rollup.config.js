@@ -1,6 +1,8 @@
 import babel from 'rollup-plugin-babel';
 import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify';
+import resolve from 'rollup-plugin-node-resolve';
+
 import pkg from './package.json';
 
 const mergeAll = objs => Object.assign({}, ...objs);
@@ -8,7 +10,9 @@ const mergeAll = objs => Object.assign({}, ...objs);
 const commonPlugins = [
   babel({
     exclude: 'node_modules/**',
+    plugins: ['external-helpers'],
   }),
+  resolve({}),
 ];
 
 const configBase = {
@@ -26,7 +30,7 @@ const umdConfig = mergeAll([
     output: {
       file: `dist/${pkg.name}.js`,
       format: 'umd',
-      name: 'ReactHitCounter',
+      name: 'RetroHitCounter',
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
@@ -42,7 +46,7 @@ const devUmdConfig = mergeAll([
     plugins: umdConfig.plugins.concat(
       replace({
         'process.env.NODE_ENV': JSON.stringify('development'),
-      }),
+      })
     ),
   },
 ]);
@@ -67,7 +71,7 @@ const prodUmdConfig = mergeAll([
           unsafe_comps: true,
           warnings: false,
         },
-      }),
+      })
     ),
   },
 ]);

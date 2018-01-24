@@ -1,17 +1,24 @@
 {
-  "name": "react-hit-counter",
+  "name": "react-retro-hit-counter",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Go back in time with this retro 90's hit counter.",
+  "main": "dist/react-retro-hit-counter.cjs.js",
+  "module": "dist/react-retro-hit-counter.es.js",
+  "typings": "typings/react-retro-hit-counter.d.ts",
+  "sideEffects": false,
   "scripts": {
-    "build": "rollup -c rollup.config.js",
+    "build": "rollup -c",
     "flow": "flow",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "author": "Josh Comeau",
+  "author": "Josh Comeau <joshwcomeau@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "react-dom"
+  ],
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.9",
     "@storybook/addon-links": "^3.3.9",
@@ -20,6 +27,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
@@ -28,13 +36,15 @@
     "jest": "^22.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "rollup": "^0.55.0",
     "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^2.0.1"
   },
   "peerDependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": ">15.3 || 16.x",
+    "react-dom": ">15.3 || 16.x"
   },
   "dependencies": {}
 }
