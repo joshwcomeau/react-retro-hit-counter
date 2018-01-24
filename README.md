@@ -24,7 +24,33 @@ $ yarn install react-retro-hit-counter
 $ npm i -s react-retro-hit-counter
 ```
 
-### Props
+### Usage
+
+```jsx
+import RetroHitCounter from 'react-retro-hit-counter';
+
+const YourComponent = () => (
+  <RetroHitCounter
+    withBorder
+    withGlow
+    hits={1337}
+    /* The following are all default values: */
+    minLength={4}
+    size={40}
+    padding={4}
+    digitSpacing={3}
+    segmentThickness={4}
+    segmentSpacing={0.5}
+    segmentActiveColor="#76FF03"
+    segmentInactiveColor="#315324"
+    backgroundColor="#222222"
+    borderThickness={6}
+    glowStrength={0.5}
+  />
+);
+```
+
+### API Reference
 
 ##### `hits`
 
@@ -68,13 +94,24 @@ The padding, in pixels, around the hit counter.
 
 The amount of space, in pixels, between each digit.
 
-##### `backgroundColor`
+##### `segmentThickness`
 
 | **Type:** | **Default Value** |
 | --------- | ----------------- |
-| `string`  | `#222222`         |
+| `number`  | `4`               |
 
-Set a custom background color for your hit counter. Accepts any valid CSS value (pass "transparent" for no background).
+The width of each segment, in pixels.
+
+You can make really abstract block-numbers with this prop:
+[INSERT COOL GIF]
+
+##### `segmentSpacing`
+
+| **Type:** | **Default Value** |
+| --------- | ----------------- |
+| `number`  | `0.5`             |
+
+Spacing between the segments, in pixels.
 
 ##### `segmentActiveColor`
 
@@ -92,10 +129,48 @@ Each digit is comprised of 7 segments, and this prop controls the color of the a
 
 Controls the color of the inactive segments. Pass "transparent" for no inactive segments.
 
-##### `segmentSpacing`
+##### `backgroundColor`
+
+| **Type:** | **Default Value** |
+| --------- | ----------------- |
+| `string`  | `#222222`         |
+
+Set a custom background color for your hit counter. Accepts any valid CSS value (pass "transparent" for no background).
+
+##### `withBorder`
+
+| **Type:** | **Default Value** |
+| --------- | ----------------- |
+| `boolean` | `false`           |
+
+No 90s hit counter would be complete without a skeumorphic chrome border!
+
+[IMAGE]
+
+> Protip: You can use the border on your own if you like, it's a named export. `import {RetroBorder} from 'react-retro-hit-counter'`. You'll need to provide an explicit width/height, though (the border is made in Canvas, and I didn't want the cost of reading width/height from the DOM).
+>
+> You can find its props [here](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/src/components/RetroBorder/RetroBorder.js#L12)
+
+##### `borderThickness`
+
+| **Type:** | **Default Value** |
+| --------- | ----------------- |
+| `number`  | `6`               |
+
+Width, in pixels, of the border. Only used if `withBorder` is set to `true`.
+
+##### `withGlow`
+
+| **Type:** | **Default Value** |
+| --------- | ----------------- |
+| `boolean` | `false`           |
+
+If desired, a soft glow can be emitted from the hit counter. This works especially well with the border. The color of the glow is based on `segmentActiveColor`.
+
+##### `glowStrength`
 
 | **Type:** | **Default Value** |
 | --------- | ----------------- |
 | `number`  | `0.5`             |
 
-Spacing between the segments, in pixels.
+The opacity of the glow. Only used if `withGlow` is set to `true`.
