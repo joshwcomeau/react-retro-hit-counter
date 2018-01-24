@@ -20,7 +20,7 @@ type Props = {
 
 class HitCounter extends PureComponent<Props> {
   static defaultProps = {
-    minLength: 1,
+    minLength: 4,
     size: 40,
     segmentThickness: 4,
     segmentSpacing: 0.5,

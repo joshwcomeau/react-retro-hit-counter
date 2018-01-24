@@ -86,6 +86,22 @@ storiesOf('Colors', module)
       segmentInactiveColor="#1565C0"
       backgroundColor="#0D47A1"
     />
+  ))
+  .add('transparent background (null)', () => (
+    <HitCounter
+      hits={1234}
+      segmentActiveColor="transparent"
+      segmentInactiveColor="transparent"
+      backgroundColor={null}
+    />
+  ))
+  .add('transparent background ("transparent")', () => (
+    <HitCounter
+      hits={1234}
+      segmentActiveColor="black"
+      segmentInactiveColor="transparent"
+      backgroundColor="transparent"
+    />
   ));
 
 storiesOf('Thicknesses', module)
