@@ -10,15 +10,12 @@ import React, { PureComponent } from 'react';
 import { scaleCanvas } from './RetroBorder.helpers';
 
 type Props = {
+  width: number,
+  height: number,
   thickness: number,
   glowColor: string,
   glowStrength: number,
   children: React$Node,
-};
-
-type State = {
-  width?: number,
-  height?: number,
 };
 
 const GRADIENTS = {
@@ -95,8 +92,8 @@ const BORDERS = [
   },
 ];
 
-class RetroBorder extends PureComponent<Props, State> {
-  state = {};
+class RetroBorder extends PureComponent<Props> {
+  parentElem: HTMLElement;
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
 
@@ -105,7 +102,18 @@ class RetroBorder extends PureComponent<Props, State> {
     thickness: 7,
   };
 
-  componentDidUpdate() {
+  componentDidMount() {
+    this.draw();
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (
+      this.props.width !== prevProps.width ||
+      this.props.height !== prevProps.height
+    ) {
+      scaleCanvas(this.canvas, this.ctx);
+    }
+
     this.draw();
   }
 
@@ -117,16 +125,11 @@ class RetroBorder extends PureComponent<Props, State> {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
 
-    const { width, height } = canvas.getBoundingClientRect();
-
     scaleCanvas(this.canvas, this.ctx);
-
-    this.setState({ width, height }, this.draw);
   };
 
   draw = () => {
-    let { thickness } = this.props;
-    const { width, height } = this.state;
+    let { width, height, thickness } = this.props;
 
     if (typeof width !== 'number' || typeof height !== 'number') {
       return;
@@ -158,8 +161,16 @@ class RetroBorder extends PureComponent<Props, State> {
   };
 
   render() {
-    const { thickness, glowStrength, glowColor, children } = this.props;
-    const { width, height } = this.state;
+    const {
+      width,
+      height,
+      thickness,
+      glowStrength,
+      glowColor,
+      children,
+    } = this.props;
+
+    console.log('Render', width, height);
 
     const shouldShowGlow = glowStrength > 0 && glowColor;
 
@@ -179,14 +190,19 @@ class RetroBorder extends PureComponent<Props, State> {
           />
         )}
 
-        <canvas style={styles.canvas()} ref={this.handleRef} />
+        <canvas
+          width={width}
+          height={height}
+          style={styles.canvas({ width, height })}
+          ref={this.handleRef}
+        />
       </div>
     );
   }
 }
 
 const styles = {
-  wrapper: ({ width, height, thickness }: Props) => ({
+  wrapper: ({ thickness }: Props) => ({
     display: 'inline-block',
     position: 'relative',
     padding: thickness,
@@ -209,15 +225,13 @@ const styles = {
     opacity: strength,
   }),
 
-  canvas: () => ({
+  canvas: ({ width, height }) => ({
     position: 'absolute',
     zIndex: 1,
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    width: '100%',
-    height: '100%',
   }),
 };
 

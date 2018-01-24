@@ -4,6 +4,7 @@ import React, { PureComponent } from 'react';
 import { padStart } from '../../utils';
 
 import Digit from '../Digit';
+import RetroBorder from '../RetroBorder';
 
 type Props = {
   hits: number,
@@ -16,6 +17,9 @@ type Props = {
   segmentSpacing: number,
   segmentActiveColor: string,
   segmentInactiveColor: string,
+  withBorder: boolean,
+  borderThickness: number,
+  glowStrength: number,
 };
 
 class HitCounter extends PureComponent<Props> {
@@ -29,6 +33,9 @@ class HitCounter extends PureComponent<Props> {
     backgroundColor: '#222222',
     digitSpacing: 3,
     padding: 4,
+    withBorder: false,
+    borderThickness: 6,
+    glowStrength: 0.5,
   };
 
   render() {
@@ -43,6 +50,9 @@ class HitCounter extends PureComponent<Props> {
       segmentActiveColor,
       segmentInactiveColor,
       digitSpacing,
+      withBorder,
+      borderThickness,
+      glowStrength,
     } = this.props;
 
     // NOTE: Each segment in each digit is exactly the same size. This means a
@@ -72,7 +82,7 @@ class HitCounter extends PureComponent<Props> {
       // plus spacing between them (eg 3x the spacing for 4 digits)
       digitSpacing * (individualDigits.length - 1);
 
-    return (
+    const counter = (
       <div style={styles.wrapper(backgroundColor, padding, totalWidth)}>
         {individualDigits.map((digit, index) => (
           <Digit
@@ -87,6 +97,22 @@ class HitCounter extends PureComponent<Props> {
           />
         ))}
       </div>
+    );
+
+    if (!withBorder) {
+      return counter;
+    }
+
+    return (
+      <RetroBorder
+        width={totalWidth + padding * 2 + borderThickness * 2}
+        height={characterHeight + padding * 2 + borderThickness * 2}
+        thickness={borderThickness}
+        glowColor={segmentActiveColor}
+        glowStrength={glowStrength}
+      >
+        {counter}
+      </RetroBorder>
     );
   }
 }

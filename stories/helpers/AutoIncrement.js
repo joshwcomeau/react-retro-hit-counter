@@ -28,7 +28,7 @@ class AutoIncrement extends PureComponent<Props, State> {
   }
 
   componentWillUnmount() {
-    window.clearInterval(this.increment);
+    window.clearInterval(this.intervalId);
   }
 
   increment = () => {

@@ -5,21 +5,23 @@ import HitCounter from '../src/index.js';
 import RetroBorder from '../src/components/RetroBorder';
 
 import AutoIncrement from './helpers/AutoIncrement';
+import AsyncSimulator from './helpers/AsyncSimulator';
 
 storiesOf('Basic', module)
   .add('0', () => <HitCounter hits={0} />)
   .add('543', () => <HitCounter hits={543} />)
   .add('12345', () => <HitCounter hits={12345} />);
 
+storiesOf('RetroBorder alone', module).add('hello world', () => (
+  <RetroBorder width={200} height={100}>
+    Hello World
+  </RetroBorder>
+));
+
 storiesOf('With Border', module)
-  .add('empty', () => (
-    <RetroBorder>
-      <div style={{ width: '100px', height: '100px' }} />
-    </RetroBorder>
-  ))
   .add('default', () => (
     <RetroBorder>
-      <HitCounter minLength={6} hits={12345} />
+      <HitCounter withBorder minLength={6} hits={12345} />
     </RetroBorder>
   ))
   .add('default, with glow', () => (
@@ -149,4 +151,16 @@ storiesOf('Incrementing', module)
     <AutoIncrement initialValue={999}>
       {val => <HitCounter hits={val} />}
     </AutoIncrement>
+  ));
+
+storiesOf('Async data', module)
+  .add('within 4 digits', () => (
+    <AsyncSimulator initialData={{ hits: 0 }} loadedData={{ hits: 514 }}>
+      {({ hits }) => <HitCounter withBorder hits={hits} />}
+    </AsyncSimulator>
+  ))
+  .add('from 4 to 6 digits', () => (
+    <AsyncSimulator initialData={{ hits: 0 }} loadedData={{ hits: 123456 }}>
+      {({ hits }) => <HitCounter withBorder hits={hits} />}
+    </AsyncSimulator>
   ));
