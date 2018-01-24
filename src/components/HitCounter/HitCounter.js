@@ -76,6 +76,7 @@ class HitCounter extends PureComponent<Props> {
       <div style={styles.wrapper(backgroundColor, padding, totalWidth)}>
         {individualDigits.map((digit, index) => (
           <Digit
+            key={index}
             value={Number(digit)}
             width={characterWidth}
             height={characterHeight}
