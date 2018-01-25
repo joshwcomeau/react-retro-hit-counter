@@ -24,7 +24,6 @@ const App = () => (
 
 const Wrapper = styled(MaxWidthWrapper)`
   min-height: 100vh;
-  text-align: center;
   display: flex;
   flex-direction: column;
 `;

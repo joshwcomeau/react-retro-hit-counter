@@ -7,5 +7,5 @@ import { COLORS } from '../../constants';
 export default styled.h1`
   font-weight: bold;
   font-size: 56px;
-  color: ${COLORS.green[500]};
+  color: ${COLORS.primary[500]};
 `;

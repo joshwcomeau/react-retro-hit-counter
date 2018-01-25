@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { COLORS } from '../../constants';
+
 import Title from '../Title';
 
 const Header = () => {
@@ -25,6 +27,7 @@ const Header = () => {
 const Wrapper = styled.header`
   padding-top: 4rem;
   padding-bottom: 2rem;
+  text-align: center;
 `;
 
 const Marquee = styled.marquee`
@@ -39,13 +42,13 @@ const Marquee = styled.marquee`
 const MarqueeContent = styled.span`
   display: inline-block;
   color: black;
-  background-color: yellow;
+  background-color: ${COLORS.yellow[500]};
   padding: 6px;
 `;
 
 const Paragraph = styled.p`
-  font-size: 18px;
-  max-width: 400px;
+  font-size: 22px;
+  max-width: 450px;
   margin: auto;
   text-shadow: 1px 1px 1px black;
 `;

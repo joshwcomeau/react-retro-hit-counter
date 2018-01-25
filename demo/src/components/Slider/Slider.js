@@ -20,15 +20,11 @@ type Props = {
 const RcSliderWithTooltip = createSliderWithTooltip(RcSlider);
 
 class Slider extends PureComponent<Props> {
-  static defaultProps = {
-    width: 100,
-  };
-
   render() {
-    const { width, label, ...delegatedProps } = this.props;
+    const { label, ...delegatedProps } = this.props;
 
     return (
-      <div style={{ width }}>
+      <div style={{ flex: 1 }}>
         {label && <Label>{label}</Label>}
 
         <RcSliderWithTooltip
@@ -43,7 +39,7 @@ class Slider extends PureComponent<Props> {
 // HACK: RC Slider uses specific class names for styling, so we'll just use
 // those.
 const SLIDER_HEIGHT = IS_MOBILE_USER_AGENT ? 28 : 16;
-const SLIDER_BAR_HEIGHT = 2;
+const SLIDER_BAR_HEIGHT = 4;
 
 injectGlobal`
   .rc-slider {
@@ -59,17 +55,17 @@ injectGlobal`
 
   .rc-slider .rc-slider-rail {
     width: 100%;
-    background: ${COLORS.gray[300]};
+    background: ${COLORS.tertiary[900]};
   }
 
   .rc-slider .rc-slider-track {
-    background: ${COLORS.gray[700]};
+    background: ${COLORS.tertiary[500]};
   }
 
   .rc-slider .rc-slider-handle {
     position: absolute;
     top: ${SLIDER_HEIGHT / 2 + SLIDER_BAR_HEIGHT / 2 + 'px'};
-    background: ${COLORS.primary[500]};
+    background: ${COLORS.pink[500]};
     width: ${SLIDER_HEIGHT + 'px'};
     height: ${SLIDER_HEIGHT + 'px'};
     transform: translate(-50%, -50%);
@@ -93,8 +89,8 @@ injectGlobal`
   .rc-slider-tooltip-content {
     height: 21px;
     line-height: 21px;
-    padding: 0 5px;
-    background: ${COLORS.gray[300]};
+    padding: 4px;
+    background: ${COLORS.tertiary[700]};
     font-size: 11px;
     font-weight: 300;
     transform: translateY(5px);
@@ -108,7 +104,7 @@ injectGlobal`
       left: 0;
       right: 0;
       margin: auto;
-      border-bottom: 3px solid ${COLORS.gray[300]};
+      border-bottom: 3px solid ${COLORS.tertiary[700]};
       border-left: 3px solid transparent;
       border-right: 3px solid transparent;
       transform: translateY(-100%);
