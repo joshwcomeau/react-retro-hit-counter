@@ -117,8 +117,6 @@ injectGlobal`
 `;
 
 const Label = styled.div`
-  font-size: 14px;
-  font-weight: 500;
   margin-bottom: ${SLIDER_HEIGHT * 0.75 + 'px'};
 `;
 
