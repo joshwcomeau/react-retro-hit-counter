@@ -2,27 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MaxWidthWrapper from '../MaxWidthWrapper';
+import Header from '../Header';
 import Center from '../Center';
 import Title from '../Title';
 
+import Demo from '../Demo';
+
+import Footer from '../Footer';
+
 const App = () => (
-  <MaxWidthWrapper>
-    <Center>
-      <Title>React Retro Hit Counter</Title>
-      <marquee>
-        <MarqueeContent>
-          Easily the best hit counter on Altavista.
-        </MarqueeContent>
-      </marquee>
-    </Center>
-  </MaxWidthWrapper>
+  <Wrapper>
+    <Header />
+
+    <DemoWrapper>
+      <Demo />
+    </DemoWrapper>
+
+    <Footer />
+  </Wrapper>
 );
 
-const MarqueeContent = styled.span`
-  display: inline-block;
-  color: black;
-  background-color: yellow;
-  padding: 6px;
+const Wrapper = styled(MaxWidthWrapper)`
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+`;
+
+const DemoWrapper = styled.div`
+  flex: 1;
 `;
 
 export default App;

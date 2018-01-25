@@ -39,6 +39,7 @@ injectGlobal`
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
+    line-height: 1.4;
   }
 
   /* HTML5 display-role reset for older browsers */

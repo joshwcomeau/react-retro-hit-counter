@@ -2,8 +2,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { COLORS } from '../../constants';
+
 export default styled.h1`
   font-weight: bold;
-  font-size: 72px;
-  font-family: sans-serif;
+  font-size: 56px;
+  color: ${COLORS.green[500]};
 `;

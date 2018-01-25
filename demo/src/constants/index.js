@@ -4,7 +4,9 @@ type Colors = {
   [color: string]: { [label: string | number]: string } | string,
 };
 export const COLORS: Colors = {
-
+  green: {
+    [500]: '#76FF03',
+  },
 };
 
 COLORS.primary = 'tbd';
