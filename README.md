@@ -2,7 +2,7 @@
 
 Remember when the web was this quirky place full of "Under Construction" clipart, guestbooks, web rings, and animated GIF backgrounds?
 
-Relive some of your youth with this straight-outta-geocities hit counter. If you have a page on the Information SuperHighway, slap this counter on it and impress all your friends.
+Relive your youth with this straight-outta-geocities hit counter. If you have a page on the Information SuperHighway, slap this counter on it and impress all your friends.
 
 > This is easily the best React counter you'll find anywhere on Altavista.
 
