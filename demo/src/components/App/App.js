@@ -56,7 +56,7 @@ class App extends Component<Props, State> {
 
 const Wrapper = styled(MaxWidthWrapper)`
   position: relative;
-  z-index: 1;
+  z-index: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
