@@ -163,6 +163,7 @@ const styles = {
   counterWrapper: () => ({
     position: 'relative',
     zIndex: 1,
+    boxSizing: 'content-box',
   }),
 
   glow: ({ strength, color, size }) => ({
