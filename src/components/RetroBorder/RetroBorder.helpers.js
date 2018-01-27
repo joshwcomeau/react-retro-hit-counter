@@ -4,12 +4,17 @@
 // in fact 4 on-screen pixels for every 1 calculated pixel.
 export function scaleCanvas(
   canvas: HTMLCanvasElement,
-  ctx: CanvasRenderingContext2D
+  ctx: CanvasRenderingContext2D,
+  width?: number,
+  height?: number
 ) {
   // If we're rendering on the server, do nothing.
   if (typeof window === 'undefined') {
     return;
   }
+
+  width = typeof width === 'number' ? width : canvas.width;
+  height = typeof height === 'number' ? height : canvas.height;
 
   const backingStoreRatio =
     ctx.webkitBackingStorePixelRatio ||
@@ -24,10 +29,10 @@ export function scaleCanvas(
 
   if (ratio > 1) {
     /* eslint-disable no-param-reassign */
-    canvas.style.height = `${canvas.height}px`;
-    canvas.style.width = `${canvas.width}px`;
-    canvas.width *= ratio;
-    canvas.height *= ratio;
+    canvas.style.height = `${height}px`;
+    canvas.style.width = `${width}px`;
+    canvas.width = width * ratio;
+    canvas.height = height * ratio;
     /* eslint-enable */
 
     ctx.scale(ratio, ratio);

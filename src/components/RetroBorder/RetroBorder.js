@@ -108,7 +108,7 @@ class RetroBorder extends PureComponent<Props> {
       this.props.width !== prevProps.width ||
       this.props.height !== prevProps.height
     ) {
-      scaleCanvas(this.canvas, this.ctx);
+      scaleCanvas(this.canvas, this.ctx, this.props.width, this.props.height);
     }
 
     this.draw();
