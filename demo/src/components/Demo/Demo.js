@@ -241,6 +241,15 @@ const Row = styled.div`
   & > *:last-of-type {
     padding-right: 0;
   }
+
+  @media (max-width: 600px) {
+    display: block;
+
+    & > * {
+      padding-right: 0;
+      padding-bottom: 1rem;
+    }
+  }
 `;
 
 export default Demo;
