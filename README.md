@@ -1,6 +1,6 @@
 # React Retro Hit Counter
 
-[![npm](https://img.shields.io/npm/v/react-retro-hit-counter.svg)]() [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/badges/shields.svg)](2700) [![npm](https://img.shields.io/npm/l/react-retro-hit-counter.svg)]()
+[![npm](https://img.shields.io/npm/v/react-retro-hit-counter.svg)]() [![GitHub code size in bytes](http://img.badgesize.io/http://tiny.cc/9t4mqy?compression=gzip)]() [![npm](https://img.shields.io/npm/l/react-retro-hit-counter.svg)]()
 
 Remember when the web was this quirky place full of "Under Construction" clipart, guestbooks, web rings, and animated GIF backgrounds?
 
