@@ -17,7 +17,7 @@ const Checkbox = ({ label, isChecked, onChange }: Props) => {
 };
 
 const CheckboxLabel = styled.label`
-  text-align: center;
+  /* text-align: center; */
 `;
 
 export default Checkbox;

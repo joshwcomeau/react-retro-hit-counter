@@ -63,19 +63,6 @@ class Demo extends PureComponent<Props, State> {
         </CounterOuterWrapper>
         <Controls>
           <Row>
-            <Checkbox
-              label="withBorder"
-              isChecked={this.state.withBorder}
-              onChange={this.updateFromCheckbox('withBorder')}
-            />
-            <Checkbox
-              label="withGlow"
-              isChecked={this.state.withGlow}
-              onChange={this.updateFromCheckbox('withGlow')}
-            />
-          </Row>
-
-          <Row>
             <Input
               type="number"
               label="hits"
@@ -156,6 +143,11 @@ class Demo extends PureComponent<Props, State> {
           </Row>
 
           <Row>
+            <Checkbox
+              label="withBorder"
+              isChecked={this.state.withBorder}
+              onChange={this.updateFromCheckbox('withBorder')}
+            />
             <Slider
               label="borderThickness"
               min={1}
@@ -163,6 +155,15 @@ class Demo extends PureComponent<Props, State> {
               value={this.state.borderThickness}
               onChange={this.updateFromSlider('borderThickness')}
             />
+          </Row>
+
+          <Row>
+            <Checkbox
+              label="withGlow"
+              isChecked={this.state.withGlow}
+              onChange={this.updateFromCheckbox('withGlow')}
+            />
+
             <Slider
               label="glowSize"
               min={0}
@@ -188,7 +189,7 @@ class Demo extends PureComponent<Props, State> {
 
 const Wrapper = styled.section`
   padding: 2rem;
-  max-width: 600px;
+  max-width: 750px;
   margin: auto;
   background: rgba(0, 0, 0, 0.75);
   font-family: Courier New, monospaced;
@@ -196,18 +197,25 @@ const Wrapper = styled.section`
 `;
 
 const CounterOuterWrapper = styled.div`
+  position: sticky;
+  top: 1rem;
+  z-index: 5;
   height: 175px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const CounterInnerWrapper = styled.div`
   padding: 2rem;
+  width: 100%;
   background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
 `;
 
 const Controls = styled.div`
+  position: relative;
+  z-index: 1;
   margin-top: 2rem;
 `;
 
