@@ -10,10 +10,12 @@ const Footer = () => {
   return (
     <FooterElem>
       <Center>
-        <Badge src={ieBadge} />
-        <Badge src={netscapeBadge} />
-        <br />
-        Copyright 2018-present Josh Comeau
+        Copyright 2018-present Josh Comeau.
+        <Badges>
+          <Notice>This page will not work on:</Notice>
+          <Badge src={ieBadge} />
+          <Badge src={netscapeBadge} />
+        </Badges>
       </Center>
     </FooterElem>
   );
@@ -22,6 +24,15 @@ const Footer = () => {
 const FooterElem = styled.footer`
   padding-top: 5rem;
   padding-bottom: 3rem;
+`;
+
+const Badges = styled.div`
+  margin-top: 1rem;
+`;
+
+const Notice = styled.div`
+  font-size: 11px;
+  margin-bottom: 5px;
 `;
 
 const Badge = styled.img`
