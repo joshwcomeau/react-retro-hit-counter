@@ -102,6 +102,24 @@ class Demo extends PureComponent<Props, State> {
 
           <Row>
             <Slider
+              label="segmentThickness"
+              min={1}
+              max={24}
+              value={this.state.segmentThickness}
+              onChange={this.updateFromSlider('segmentThickness')}
+            />
+            <Slider
+              label="segmentSpacing"
+              min={0}
+              max={10}
+              step={0.5}
+              value={this.state.segmentSpacing}
+              onChange={this.updateFromSlider('segmentSpacing')}
+            />
+          </Row>
+
+          <Row>
+            <Slider
               label="minLength"
               min={0}
               max={12}
@@ -121,24 +139,6 @@ class Demo extends PureComponent<Props, State> {
               max={12}
               value={this.state.digitSpacing}
               onChange={this.updateFromSlider('digitSpacing')}
-            />
-          </Row>
-
-          <Row>
-            <Slider
-              label="segmentThickness"
-              min={1}
-              max={24}
-              value={this.state.segmentThickness}
-              onChange={this.updateFromSlider('segmentThickness')}
-            />
-            <Slider
-              label="segmentSpacing"
-              min={0}
-              max={10}
-              step={0.5}
-              value={this.state.segmentSpacing}
-              onChange={this.updateFromSlider('segmentSpacing')}
             />
           </Row>
 
@@ -203,7 +203,7 @@ const Wrapper = styled.section`
 
 const CounterOuterWrapper = styled.div`
   position: sticky;
-  top: 1rem;
+  top: 0;
   z-index: 5;
   height: 175px;
 `;
