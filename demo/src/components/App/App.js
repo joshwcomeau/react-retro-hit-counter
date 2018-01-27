@@ -2,6 +2,8 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
+import starsImage from '../../images/bg-stars.gif';
+
 import Guestbook from '../Guestbook';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import Header from '../Header';
@@ -26,7 +28,6 @@ class App extends Component<Props, State> {
   };
 
   render() {
-    console.log(this.state.isGuestbookVisible);
     return (
       <Fragment>
         {this.state.isGuestbookVisible && (
@@ -49,6 +50,8 @@ class App extends Component<Props, State> {
 
           <Footer />
         </Wrapper>
+
+        <BackgroundImage src={starsImage} />
       </Fragment>
     );
   }
@@ -68,6 +71,16 @@ const DemoWrapper = styled.div`
 
 const GuestbookCTAWrapper = styled.div`
   padding-top: 8rem;
+`;
+
+const BackgroundImage = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: ${props => `url(${props.src})`};
 `;
 
 export default App;

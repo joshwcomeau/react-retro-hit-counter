@@ -1,8 +1,6 @@
 // @flow
 import { injectGlobal } from 'styled-components';
 
-import backgroundImage from './images/bg-stars.gif';
-
 injectGlobal`
   *,
   *:after,
@@ -88,7 +86,6 @@ injectGlobal`
   body {
     font-family: "Comic Sans MS", cursive, sans-serif;
     color: white;
-    background-image: url('${backgroundImage}');
     margin: 0;
   }
 `;
