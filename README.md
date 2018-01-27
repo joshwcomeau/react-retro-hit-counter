@@ -96,7 +96,7 @@ The height in pixels of each digit.
 
 The padding, in pixels, around the hit counter.
 
-![hits](./docs/demo-padding.gif)
+![padding](./docs/demo-padding.gif)
 
 ##### `digitSpacing`
 
@@ -106,7 +106,7 @@ The padding, in pixels, around the hit counter.
 
 The amount of space, in pixels, between each digit.
 
-![hits](./docs/demo-digitspacing.gif)
+![digitSpacing](./docs/demo-digitspacing.gif)
 
 ##### `segmentThickness`
 
@@ -116,9 +116,9 @@ The amount of space, in pixels, between each digit.
 
 The width of each segment, in pixels.
 
-You can make really abstract numbers with this prop!
+You can make really abstract numbers with this prop! I've decided that this is a feature, not a bug.
 
-![hits](./docs/demo-segmentthickness.gif)
+![segmentThickness](./docs/demo-segmentthickness.gif)
 
 ##### `segmentSpacing`
 
@@ -128,7 +128,7 @@ You can make really abstract numbers with this prop!
 
 Spacing between the segments, in pixels.
 
-![hits](./docs/demo-segmentspacing.gif)
+![segmentSpacing](./docs/demo-segmentspacing.gif)
 
 ##### `segmentActiveColor`
 
@@ -138,7 +138,7 @@ Spacing between the segments, in pixels.
 
 Each digit is comprised of 7 segments, and this prop controls the color of the active ones (AKA the number itself).
 
-![hits](./docs/demo-segmentactivecolor.gif)
+![segmentActiveColor](./docs/demo-segmentactivecolor.gif)
 
 ##### `segmentInactiveColor`
 
@@ -148,7 +148,7 @@ Each digit is comprised of 7 segments, and this prop controls the color of the a
 
 Controls the color of the inactive segments. Pass "transparent" for no inactive segments.
 
-![hits](./docs/demo-segmentinactivecolor.gif)
+![segmentInactiveColor](./docs/demo-segmentinactivecolor.gif)
 
 ##### `backgroundColor`
 
@@ -158,7 +158,7 @@ Controls the color of the inactive segments. Pass "transparent" for no inactive 
 
 Set a custom background color for your hit counter. Accepts any valid CSS value (pass "transparent" for no background).
 
-![hits](./docs/demo-backgroundcolor.gif)
+![backgroundColor](./docs/demo-backgroundcolor.gif)
 
 ##### `withBorder`
 
@@ -168,7 +168,7 @@ Set a custom background color for your hit counter. Accepts any valid CSS value 
 
 No 90s hit counter would be complete without a skeumorphic chrome border!
 
-![hits](./docs/demo-withborder.gif)
+![withBorder](./docs/demo-withborder.gif)
 
 > Protip: You can use the border on your own if you like, it's a named export. `import {RetroBorder} from 'react-retro-hit-counter'`. You'll need to provide an explicit width/height, though (the border is made in Canvas, and I didn't want the cost of reading width/height from the DOM).
 >
@@ -182,7 +182,7 @@ No 90s hit counter would be complete without a skeumorphic chrome border!
 
 Width, in pixels, of the border. Only used if `withBorder` is set to `true`.
 
-![hits](./docs/demo-borderthickness.gif)
+![borderThickness](./docs/demo-borderthickness.gif)
 
 ##### `withGlow`
 
@@ -192,7 +192,7 @@ Width, in pixels, of the border. Only used if `withBorder` is set to `true`.
 
 If desired, a soft glow can be emitted from the hit counter. This works especially well with the border. The color of the glow is based on `segmentActiveColor`.
 
-![hits](./docs/demo-withglow.gif)
+![withGlow](./docs/demo-withglow.gif)
 
 ##### `glowSize`
 
@@ -202,7 +202,7 @@ If desired, a soft glow can be emitted from the hit counter. This works especial
 
 This parameter controls both the negative margin of the glow, as well as the blur amount. Larger values take up more space, but are also more of a soft blur.
 
-![hits](./docs/demo-glowsize.gif)
+![glowSize](./docs/demo-glowsize.gif)
 
 ##### `glowStrength`
 
@@ -212,4 +212,4 @@ This parameter controls both the negative margin of the glow, as well as the blu
 
 The opacity of the glow. Only used if `withGlow` is set to `true`.
 
-![hits](./docs/demo-glowstrength.gif)
+![glowStrength](./docs/demo-glowstrength.gif)
