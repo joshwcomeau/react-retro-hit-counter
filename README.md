@@ -1,5 +1,7 @@
 # React Retro Hit Counter
 
+[![npm](https://img.shields.io/npm/v/react-retro-hit-counter.svg)]() [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/badges/shields.svg)](2700) [![npm](https://img.shields.io/npm/l/react-retro-hit-counter.svg)]()
+
 Remember when the web was this quirky place full of "Under Construction" clipart, guestbooks, web rings, and animated GIF backgrounds?
 
 Relive your youth with this straight-outta-geocities hit counter. If you have a page on the Information SuperHighway, slap this counter on it and impress all your friends.
@@ -21,6 +23,10 @@ No. This is just a presentational component; bring-your-own-tracking-system. If 
 ### Compatibility
 
 Compatible with React 15.3 or higher.
+
+As for browser compatibility, I believe this should be compatible all major browsers. I haven't tested on IE or Edge, but see no reason it wouldn't work.
+
+(If anyone with a Windows machine can test this out, please let me know!)
 
 ### Installation
 
@@ -144,7 +150,7 @@ Each digit is comprised of 7 segments, and this prop controls the color of the a
 
 | **Type:** | **Default Value** |
 | --------- | ----------------- |
-| `string`  | `#76FF03`         |
+| `string`  | `#315324`         |
 
 Controls the color of the inactive segments. Pass "transparent" for no inactive segments.
 
@@ -178,7 +184,7 @@ No 90s hit counter would be complete without a skeumorphic chrome border!
 
 | **Type:** | **Default Value** |
 | --------- | ----------------- |
-| `number`  | `6`               |
+| `number`  | `7`               |
 
 Width, in pixels, of the border. Only used if `withBorder` is set to `true`.
 
@@ -190,7 +196,9 @@ Width, in pixels, of the border. Only used if `withBorder` is set to `true`.
 | --------- | ----------------- |
 | `boolean` | `false`           |
 
-If desired, a soft glow can be emitted from the hit counter. This works especially well with the border. The color of the glow is based on `segmentActiveColor`.
+If desired, a soft glow can be emitted from the hit counter. This works especially well with the border.
+
+The color of the glow is based on `segmentActiveColor`.
 
 ![withGlow](./docs/demo-withglow.gif)
 
@@ -213,3 +221,15 @@ This parameter controls both the negative margin of the glow, as well as the blu
 The opacity of the glow. Only used if `withGlow` is set to `true`.
 
 ![glowStrength](./docs/demo-glowstrength.gif)
+
+### Future Work and Contributions
+
+Wanna help bring that 90s aesthetic back to the web?
+
+There are a few things I'd like to do, and could use a hand with:
+
+* a11y: unclear if the best approach is to use aria tags, or just add actual zero-opacity text like "Hit counter. Number: n" that screen-readers can recite.
+* The segments are all the same shape. This can be harmful to legibility; ideally, you want the outer pieces to be trapezoids. [See an example](https://www.jqueryscript.net/images/Stylish-jQuery-CSS3-Based-Digital-Clock.jpg).
+* Tests! I have very few tests, none on the component itself. This should change.
+
+###
