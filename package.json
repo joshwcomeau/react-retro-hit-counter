@@ -6,15 +6,16 @@
   "description": "Go back in time with this retro 90's hit counter.",
   "main": "dist/react-retro-hit-counter.cjs.js",
   "module": "dist/react-retro-hit-counter.es.js",
-  "typings": "typings/react-retro-hit-counter.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && npm run copy-to-demo",
+    "copy-to-demo":
+      "rm -rf ./demo/node_modules/react-retro-hit-counter/dist && cp -r ./dist ./demo/node_modules/react-retro-hit-counter/dist",
     "flow": "flow",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prebuild": "flow check && npm run test",
+    "TMP-prebuild": "flow check && npm run test",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {

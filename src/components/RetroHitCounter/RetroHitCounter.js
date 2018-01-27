@@ -150,6 +150,7 @@ const styles = {
     width,
     backgroundColor,
     padding,
+    boxSizing: 'content-box',
   }),
 
   withBorderWrapper: borderWidth => ({

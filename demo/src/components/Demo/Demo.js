@@ -25,7 +25,7 @@ class Demo extends PureComponent<Props, State> {
   updateFromSlider = (key: string) => (value: number | string | boolean) =>
     this.setState({ [key]: value });
 
-  updateFromCheckbox = (key: string) => (ev: SyntheticEvent) =>
+  updateFromCheckbox = (key: string) => (ev: SyntheticInputEvent<*>) =>
     this.setState({ [key]: ev.target.checked });
 
   render() {
