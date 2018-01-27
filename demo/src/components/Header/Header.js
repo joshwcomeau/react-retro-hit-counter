@@ -10,9 +10,7 @@ const Header = () => {
     <Wrapper>
       <Title>React Retro Hit Counter</Title>
       <Marquee>
-        <MarqueeContent>
-          Easily the best hit counter on Altavista.
-        </MarqueeContent>
+        <MarqueeContent>Perfect for your LiveJournal!</MarqueeContent>
       </Marquee>
 
       <Paragraph>

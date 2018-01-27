@@ -1,26 +1,62 @@
-import React from 'react';
+// @flow
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
+import Guestbook from '../Guestbook';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import Header from '../Header';
-
 import Demo from '../Demo';
-
+import GuestbookCTA from '../GuestbookCTA';
 import Footer from '../Footer';
+import ScrollDisabler from '../ScrollDisabler/ScrollDisabler';
 
-const App = () => (
-  <Wrapper>
-    <Header />
+type Props = {};
 
-    <DemoWrapper>
-      <Demo />
-    </DemoWrapper>
+type State = {
+  isGuestbookVisible: boolean,
+};
 
-    <Footer />
-  </Wrapper>
-);
+class App extends Component<Props, State> {
+  state = {
+    isGuestbookVisible: false,
+  };
+
+  toggleGuestbook = () => {
+    this.setState(state => ({ isGuestbookVisible: !state.isGuestbookVisible }));
+  };
+
+  render() {
+    console.log(this.state.isGuestbookVisible);
+    return (
+      <Fragment>
+        {this.state.isGuestbookVisible && (
+          <Fragment>
+            <ScrollDisabler />
+            <Guestbook handleToggle={this.toggleGuestbook} />
+          </Fragment>
+        )}
+
+        <Wrapper>
+          <Header />
+
+          <DemoWrapper>
+            <Demo />
+          </DemoWrapper>
+
+          <GuestbookCTAWrapper>
+            <GuestbookCTA handleClick={this.toggleGuestbook} />
+          </GuestbookCTAWrapper>
+
+          <Footer />
+        </Wrapper>
+      </Fragment>
+    );
+  }
+}
 
 const Wrapper = styled(MaxWidthWrapper)`
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,6 +64,10 @@ const Wrapper = styled(MaxWidthWrapper)`
 
 const DemoWrapper = styled.div`
   flex: 1;
+`;
+
+const GuestbookCTAWrapper = styled.div`
+  padding-top: 8rem;
 `;
 
 export default App;

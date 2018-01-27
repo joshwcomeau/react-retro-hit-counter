@@ -80,6 +80,32 @@ class Demo extends PureComponent<Props, State> {
           </Row>
 
           <Row>
+            <Slider
+              label="minLength"
+              min={0}
+              max={12}
+              value={this.state.minLength}
+              onChange={this.updateFromSlider('minLength')}
+            />
+            <Slider
+              label="padding"
+              min={0}
+              max={12}
+              value={this.state.padding}
+              onChange={this.updateFromSlider('padding')}
+            />
+            <Slider
+              label="digitSpacing"
+              min={0}
+              max={12}
+              value={this.state.digitSpacing}
+              onChange={this.updateFromSlider('digitSpacing')}
+            />
+          </Row>
+          <br />
+          <br />
+
+          <Row>
             <Input
               type="color"
               value={this.state.segmentActiveColor}
@@ -118,30 +144,8 @@ class Demo extends PureComponent<Props, State> {
             />
           </Row>
 
-          <Row>
-            <Slider
-              label="minLength"
-              min={0}
-              max={12}
-              value={this.state.minLength}
-              onChange={this.updateFromSlider('minLength')}
-            />
-            <Slider
-              label="padding"
-              min={0}
-              max={12}
-              value={this.state.padding}
-              onChange={this.updateFromSlider('padding')}
-            />
-            <Slider
-              label="digitSpacing"
-              min={0}
-              max={12}
-              value={this.state.digitSpacing}
-              onChange={this.updateFromSlider('digitSpacing')}
-            />
-          </Row>
-
+          <br />
+          <br />
           <Row>
             <Checkbox
               label="withBorder"
