@@ -1,7 +1,19 @@
 {
   "name": "demo",
-  "version": "0.1.0",
+  "author": "Josh Comeau <joshwcomeau@gmail.com>",
   "license": "MIT",
+  "version": "0.0.1",
+  "description": "Go back in time with this retro 90's hit counter.",
+  "homepage": "https://joshwcomeau.github.io/react-retro-hit-counter",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "flow": "flow",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "dependencies": {
     "flow-bin": "^0.64.0",
     "rc-slider": "^8.6.0",
@@ -11,12 +23,5 @@
     "react-retro-hit-counter": "^0.0.1",
     "react-scripts": "1.1.0",
     "styled-components": "^3.0.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "flow": "flow"
   }
 }
