@@ -4,7 +4,7 @@
 
 Remember when the web was this quirky place full of "Under Construction" clipart, guestbooks, web rings, and animated GIF backgrounds?
 
-Relive your youth with this straight-outta-geocities hit counter. If you have a page on the Information SuperHighway, slap this counter on it and impress all your friends.
+Relive your youth with this straight-outta-geocities hit counter. If you have a page on the Information SuperHighway, slap this bad boy on it and impress all your friends.
 
 ![example image](./docs/demo.png)
 
@@ -24,9 +24,7 @@ No. This is just a presentational component; bring-your-own-tracking-system. If 
 
 Compatible with React 15.3 or higher.
 
-As for browser compatibility, I believe this should be compatible all major browsers. I haven't tested on IE or Edge, but see no reason it wouldn't work.
-
-(If anyone with a Windows machine can test this out, please let me know!)
+Works on all major browsers, including Edge. Haven't tested on IE.
 
 ### Installation
 
@@ -231,5 +229,3 @@ There are a few things I'd like to do, and could use a hand with:
 * a11y: unclear if the best approach is to use aria tags, or just add actual zero-opacity text like "Hit counter. Number: n" that screen-readers can recite.
 * The segments are all the same shape. This can be harmful to legibility; ideally, you want the outer pieces to be trapezoids. [See an example](https://www.jqueryscript.net/images/Stylish-jQuery-CSS3-Based-Digital-Clock.jpg).
 * Tests! I have very few tests, none on the component itself. This should change.
-
-###
