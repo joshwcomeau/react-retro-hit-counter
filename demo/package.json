@@ -1,11 +1,12 @@
 {
   "name": "demo",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
   "dependencies": {
     "flow-bin": "^0.64.0",
     "rc-slider": "^8.6.0",
     "react": "^16.2.0",
+    "react-color": "^2.13.8",
     "react-dom": "^16.2.0",
     "react-retro-hit-counter": "^0.0.1",
     "react-scripts": "1.1.0",

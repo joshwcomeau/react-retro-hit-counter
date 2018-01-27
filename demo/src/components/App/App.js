@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import Header from '../Header';
-import Center from '../Center';
-import Title from '../Title';
 
 import Demo from '../Demo';
 

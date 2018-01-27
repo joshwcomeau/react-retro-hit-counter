@@ -1,10 +1,11 @@
 // @flow
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import RcSlider, { createSliderWithTooltip } from 'rc-slider';
 import { injectGlobal } from 'styled-components';
 
 import { COLORS, IS_MOBILE_USER_AGENT } from '../../constants';
+
+import InputLabel from '../InputLabel';
 
 type Props = {
   width: number,
@@ -25,7 +26,7 @@ class Slider extends PureComponent<Props> {
 
     return (
       <div style={{ flex: 1 }}>
-        {label && <Label>{label}</Label>}
+        <InputLabel label={label} style={{ marginBottom: 12 }} />
 
         <RcSliderWithTooltip
           {...delegatedProps}
@@ -114,10 +115,6 @@ injectGlobal`
   .rc-slider-tooltip-hidden {
     opacity: 0;
   }
-`;
-
-const Label = styled.div`
-  margin-bottom: ${SLIDER_HEIGHT * 0.75 + 'px'};
 `;
 
 export default Slider;
