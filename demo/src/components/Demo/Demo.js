@@ -209,11 +209,11 @@ const CounterOuterWrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 5;
-  height: 175px;
 `;
 
 const CounterInnerWrapper = styled.div`
   padding: 2rem;
+  height: 175px;
   width: 100%;
   background: #fff;
   display: flex;

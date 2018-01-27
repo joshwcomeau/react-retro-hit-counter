@@ -9,13 +9,15 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c && npm run copy-to-demo",
-    "copy-to-demo": "rm -rf ./demo/node_modules/react-retro-hit-counter/dist && cp -r ./dist ./demo/node_modules/react-retro-hit-counter/dist",
+    "copy-to-demo":
+      "rm -rf ./demo/node_modules/react-retro-hit-counter/dist && cp -r ./dist ./demo/node_modules/react-retro-hit-counter/dist",
     "flow": "flow",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "TMP-prebuild": "flow check && npm run test",
-    "prepublishOnly": "npm run build"
+    "prebuild": "flow check && npm run test",
+    "prepublishOnly": "npm run build",
+    "deploy-demo": "cd demo && npm run deploy"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.9",
@@ -47,8 +49,5 @@
   "dependencies": {
     "gh-pages": "^1.1.0"
   },
-  "keywords": [
-    "react",
-    "react-dom"
-  ]
+  "keywords": ["react", "react-dom"]
 }
