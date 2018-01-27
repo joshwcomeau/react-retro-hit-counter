@@ -13,4 +13,4 @@ const segmentsByValue = {
 };
 
 export const isSegmentActive = (segmentId: string, value: number) =>
-  segmentsByValue[value].includes(segmentId);
+  segmentsByValue[value].indexOf(segmentId) !== -1;

@@ -9,8 +9,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c && npm run copy-to-demo",
-    "copy-to-demo":
-      "rm -rf ./demo/node_modules/react-retro-hit-counter/dist && cp -r ./dist ./demo/node_modules/react-retro-hit-counter/dist",
+    "copy-to-demo": "rm -rf ./demo/node_modules/react-retro-hit-counter/dist && cp -r ./dist ./demo/node_modules/react-retro-hit-counter/dist",
     "flow": "flow",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
@@ -33,6 +32,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "flow-bin": "^0.63.1",
+    "gh-pages": "^1.1.0",
     "jest": "^22.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -46,8 +46,9 @@
     "react": ">15.3 || 16.x",
     "react-dom": ">15.3 || 16.x"
   },
-  "dependencies": {
-    "gh-pages": "^1.1.0"
-  },
-  "keywords": ["react", "react-dom"]
+  "dependencies": {},
+  "keywords": [
+    "react",
+    "react-dom"
+  ]
 }

@@ -35,7 +35,7 @@ class RetroHitCounter extends PureComponent<Props> {
     segmentActiveColor: '#76FF03',
     segmentInactiveColor: '#315324',
     backgroundColor: '#222222',
-    withBorder: false,
+    withBorder: true,
     borderThickness: 7,
     withGlow: false,
     glowSize: 2,

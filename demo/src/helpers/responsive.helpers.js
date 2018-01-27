@@ -1,9 +1,8 @@
 import { BREAKPOINT_SIZES, IS_MOBILE_USER_AGENT } from '../constants';
 
-export const getBreakpointFor = windowWidth =>
-  Object.keys(BREAKPOINT_SIZES).find(
-    name => windowWidth <= BREAKPOINT_SIZES[name]
-  ) || 'xl';
+export const getBreakpointFor = windowWidth => {
+  return 'xl';
+};
 
 export const isMobile = breakpoint => {
   if (!breakpoint) {
