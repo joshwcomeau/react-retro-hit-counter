@@ -148,13 +148,16 @@ class Demo extends PureComponent<Props, State> {
               isChecked={this.state.withBorder}
               onChange={this.updateFromCheckbox('withBorder')}
             />
-            <Slider
-              label="borderThickness"
-              min={1}
-              max={20}
-              value={this.state.borderThickness}
-              onChange={this.updateFromSlider('borderThickness')}
-            />
+            <div style={{ flex: 2 }}>
+              <Slider
+                label="borderThickness"
+                disabled={!this.state.withBorder}
+                min={1}
+                max={20}
+                value={this.state.borderThickness}
+                onChange={this.updateFromSlider('borderThickness')}
+              />
+            </div>
           </Row>
 
           <Row>
@@ -166,6 +169,7 @@ class Demo extends PureComponent<Props, State> {
 
             <Slider
               label="glowSize"
+              disabled={!this.state.withGlow}
               min={0}
               max={10}
               step={0.5}
@@ -174,6 +178,7 @@ class Demo extends PureComponent<Props, State> {
             />
             <Slider
               label="glowStrength"
+              disabled={!this.state.withGlow}
               min={0}
               max={1}
               step={0.05}

@@ -59,8 +59,16 @@ injectGlobal`
     background: ${COLORS.tertiary[900]};
   }
 
+  .rc-slider.rc-slider-disabled .rc-slider-rail {
+    background: ${COLORS.gray[900]};
+  }
+
   .rc-slider .rc-slider-track {
     background: ${COLORS.tertiary[500]};
+  }
+
+  .rc-slider.rc-slider-disabled .rc-slider-track {
+    background: ${COLORS.gray[500]};
   }
 
   .rc-slider .rc-slider-handle {
@@ -73,6 +81,11 @@ injectGlobal`
     border-radius: 50%;
     cursor: grab;
     touch-action: pan-x;
+  }
+
+  .rc-slider.rc-slider-disabled .rc-slider-handle {
+    background: ${COLORS.gray[300]};
+    cursor: not-allowed;
   }
 
   .rc-slider .rc-slider-handle:active {
