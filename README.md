@@ -1,4 +1,4 @@
-![example image](./docs/demo.png)
+![example image](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo.png?raw=true)
 
 # React Retro Hit Counter
 
@@ -86,7 +86,7 @@ The number of hits to display!
 
 Single-digit hit counters are sad. Start-pad the number with 0s.
 
-![minLength](./docs/demo-minlength.gif)
+![minLength](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-minlength.gif?raw=true)
 
 ##### `size`
 
@@ -96,7 +96,7 @@ Single-digit hit counters are sad. Start-pad the number with 0s.
 
 The height, in pixels, of each digit. Not including `padding`.
 
-![hits](./docs/demo-size.gif)
+![hits](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-size.gif?raw=true)
 
 ##### `padding`
 
@@ -106,7 +106,7 @@ The height, in pixels, of each digit. Not including `padding`.
 
 The padding, in pixels, around the hit counter.
 
-![padding](./docs/demo-padding.gif)
+![padding](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-padding.gif?raw=true)
 
 ##### `digitSpacing`
 
@@ -116,7 +116,7 @@ The padding, in pixels, around the hit counter.
 
 The amount of space, in pixels, between each digit.
 
-![digitSpacing](./docs/demo-digitspacing.gif)
+![digitSpacing](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-digitspacing.gif?raw=true)
 
 ##### `segmentThickness`
 
@@ -126,7 +126,7 @@ The amount of space, in pixels, between each digit.
 
 The width of each segment, in pixels.
 
-![segmentThickness](./docs/demo-segmentthickness.gif)
+![segmentThickness](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-segmentthickness.gif?raw=true)
 
 > You can make really abstract numbers with this prop! I've decided that this is a feature, not a bug.
 
@@ -138,7 +138,7 @@ The width of each segment, in pixels.
 
 Spacing between the segments, in pixels.
 
-![segmentSpacing](./docs/demo-segmentspacing.gif)
+![segmentSpacing](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-segmentspacing.gif?raw=true)
 
 ##### `segmentActiveColor`
 
@@ -148,7 +148,7 @@ Spacing between the segments, in pixels.
 
 Each digit is comprised of 7 segments, and this prop controls the color of the active ones (AKA the number itself).
 
-![segmentActiveColor](./docs/demo-segmentactivecolor.gif)
+![segmentActiveColor](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-segmentactivecolor.gif?raw=true)
 
 ##### `segmentInactiveColor`
 
@@ -158,7 +158,7 @@ Each digit is comprised of 7 segments, and this prop controls the color of the a
 
 Controls the color of the inactive segments. Pass "transparent" to not show the inactive ones.
 
-![segmentInactiveColor](./docs/demo-segmentinactivecolor.gif)
+![segmentInactiveColor](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-segmentinactivecolor.gif?raw=true)
 
 ##### `backgroundColor`
 
@@ -168,7 +168,7 @@ Controls the color of the inactive segments. Pass "transparent" to not show the 
 
 Set a custom background color for your hit counter. Accepts any valid CSS value (pass "transparent" for no background).
 
-![backgroundColor](./docs/demo-backgroundcolor.gif)
+![backgroundColor](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-backgroundcolor.gif?raw=true)
 
 ##### `withBorder`
 
@@ -178,7 +178,7 @@ Set a custom background color for your hit counter. Accepts any valid CSS value 
 
 No 90s hit counter would be complete without a skeumorphic chrome border!
 
-![withBorder](./docs/demo-withborder.gif)
+![withBorder](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-withborder.gif?raw=true)
 
 > Protip: You can use the border on your own if you like, it's a named export. `import {RetroBorder} from 'react-retro-hit-counter'`. You'll need to provide an explicit width/height, though (the border is made in Canvas, and I didn't want the cost of reading width/height from the DOM).
 >
@@ -192,7 +192,7 @@ No 90s hit counter would be complete without a skeumorphic chrome border!
 
 Width, in pixels, of the border. Only used if `withBorder` is set to `true`.
 
-![borderThickness](./docs/demo-borderthickness.gif)
+![borderThickness](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-borderthickness.gif?raw=true)
 
 ##### `withGlow`
 
@@ -204,7 +204,7 @@ If desired, a soft glow can be emitted from the hit counter. This works especial
 
 The color of the glow is based on `segmentActiveColor`.
 
-![withGlow](./docs/demo-withglow.gif)
+![withGlow](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-withglow.gif?raw=true)
 
 ##### `glowSize`
 
@@ -214,7 +214,7 @@ The color of the glow is based on `segmentActiveColor`.
 
 The size of the glow. This parameter controls both the negative margin, in pixels, as well as the blur amount (also in pixels). Only used if `withGlow` is set to `true`.
 
-![glowSize](./docs/demo-glowsize.gif)
+![glowSize](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-glowsize.gif?raw=true)
 
 ##### `glowStrength`
 
@@ -224,7 +224,7 @@ The size of the glow. This parameter controls both the negative margin, in pixel
 
 The opacity of the glow. Only used if `withGlow` is set to `true`.
 
-![glowStrength](./docs/demo-glowstrength.gif)
+![glowStrength](https://github.com/joshwcomeau/react-retro-hit-counter/blob/master/docs/demo-glowstrength.gif?raw=true)
 
 ### Future Work and Contributions
 
