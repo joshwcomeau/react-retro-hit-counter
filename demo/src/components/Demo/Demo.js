@@ -11,6 +11,7 @@ type Props = {};
 type State = {
   withBorder: boolean,
   withGlow: boolean,
+  hits: number,
   size: number,
   minLength: number,
   padding: number,

@@ -5,6 +5,7 @@
 .*/node_modules/preact/.*
 .*/node_modules/@storybook/.*
 .*/node_modules/radium/.*
+.*/demo/*
 
 [include]
 
@@ -12,3 +13,4 @@
 flow-typed
 
 [options]
+esproposal.class_instance_fields=enable

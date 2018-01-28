@@ -6,12 +6,12 @@ import InputLabel from '../InputLabel';
 
 type Props = {
   label: React$Node,
-  type: 'text' | 'number' | 'color',
+  type?: 'text' | 'number' | 'color',
   value: string,
   onChange: (ev: SyntheticInputEvent<*>) => void,
 };
 
-const Input = ({ label, type = 'text', value, onChange }) => {
+const Input = ({ label, type = 'text', value, onChange }: Props) => {
   return (
     <InputLabel label={label}>
       <InputElem type={type} value={value} onChange={onChange} />
