@@ -1,3 +1,5 @@
+![example image](./docs/demo.png)
+
 # React Retro Hit Counter
 
 [![npm](https://img.shields.io/npm/v/react-retro-hit-counter.svg)]() [![GitHub code size in bytes](http://img.badgesize.io/http://tiny.cc/9t4mqy?compression=gzip)]() [![npm](https://img.shields.io/npm/l/react-retro-hit-counter.svg)]()
@@ -6,15 +8,19 @@ Remember when the web was this quirky place full of "Under Construction" clipart
 
 Relive your youth with this straight-outta-geocities hit counter. If you have a page on the Information SuperHighway, slap this bad boy on it and impress all your friends.
 
-![example image](./docs/demo.png)
+* Retro 90s aesthetic
+* Highly customizable
+* Includes optional skeumorphic border, and soft glow.
+* Generated on-the-fly with SVG and Canvas. No images, totally scalable.
+* Tiny! <3kb gzip.
 
-> This is easily the best React counter you'll find anywhere on Altavista.
+> Easily the best React counter you'll find anywhere on Altavista.
 
 ---
 
 ### Is this serious?
 
-Yes! It's a real thing. I'll be maintaining it.
+Yes! It's a real thing.
 
 ### Does this actually track hits?
 
@@ -41,10 +47,10 @@ import RetroHitCounter from 'react-retro-hit-counter';
 
 const YourComponent = () => (
   <RetroHitCounter
-    withBorder
-    withGlow
     hits={1337}
     /* The following are all default values: */
+    withBorder={true}
+    withGlow={false}
     minLength={4}
     size={40}
     padding={4}
@@ -54,7 +60,7 @@ const YourComponent = () => (
     segmentActiveColor="#76FF03"
     segmentInactiveColor="#315324"
     backgroundColor="#222222"
-    borderThickness={6}
+    borderThickness={7}
     glowStrength={0.5}
   />
 );
@@ -78,9 +84,9 @@ The number of hits to display!
 | --------- | ----------------- |
 | `number`  | `4`               |
 
-Single-digit hit counters are sad. Start-pad the number with this many 0s. `8` -> `0008`.
+Single-digit hit counters are sad. Start-pad the number with 0s.
 
-![hits](./docs/demo-minlength.gif)
+![minLength](./docs/demo-minlength.gif)
 
 ##### `size`
 
@@ -88,7 +94,7 @@ Single-digit hit counters are sad. Start-pad the number with this many 0s. `8` -
 | --------- | ----------------- |
 | `number`  | `40`              |
 
-The height in pixels of each digit.
+The height, in pixels, of each digit. Not including `padding`.
 
 ![hits](./docs/demo-size.gif)
 
@@ -120,9 +126,9 @@ The amount of space, in pixels, between each digit.
 
 The width of each segment, in pixels.
 
-You can make really abstract numbers with this prop! I've decided that this is a feature, not a bug.
-
 ![segmentThickness](./docs/demo-segmentthickness.gif)
+
+> You can make really abstract numbers with this prop! I've decided that this is a feature, not a bug.
 
 ##### `segmentSpacing`
 
@@ -150,7 +156,7 @@ Each digit is comprised of 7 segments, and this prop controls the color of the a
 | --------- | ----------------- |
 | `string`  | `#315324`         |
 
-Controls the color of the inactive segments. Pass "transparent" for no inactive segments.
+Controls the color of the inactive segments. Pass "transparent" to not show the inactive ones.
 
 ![segmentInactiveColor](./docs/demo-segmentinactivecolor.gif)
 
@@ -206,7 +212,7 @@ The color of the glow is based on `segmentActiveColor`.
 | --------- | ----------------- |
 | `number`  | `2`               |
 
-This parameter controls both the negative margin of the glow, as well as the blur amount. Larger values take up more space, but are also more of a soft blur.
+The size of the glow. This parameter controls both the negative margin, in pixels, as well as the blur amount (also in pixels). Only used if `withGlow` is set to `true`.
 
 ![glowSize](./docs/demo-glowsize.gif)
 
@@ -226,6 +232,16 @@ Wanna help bring that 90s aesthetic back to the web?
 
 There are a few things I'd like to do, and could use a hand with:
 
-* a11y: unclear if the best approach is to use aria tags, or just add actual zero-opacity text like "Hit counter. Number: n" that screen-readers can recite.
-* The segments are all the same shape. This can be harmful to legibility; ideally, you want the outer pieces to be trapezoids. [See an example](https://www.jqueryscript.net/images/Stylish-jQuery-CSS3-Based-Digital-Clock.jpg).
-* Tests! I have very few tests, none on the component itself. This should change.
+* [#1](https://github.com/joshwcomeau/react-retro-hit-counter/issues/1) - The segments are all the same shape. This can be harmful to legibility; ideally, you want the outer pieces to be trapezoids. [See an example](https://www.jqueryscript.net/images/Stylish-jQuery-CSS3-Based-Digital-Clock.jpg).
+
+* [#2](https://github.com/joshwcomeau/react-retro-hit-counter/issues/2) - a11y: unclear if the best approach is to use aria tags, or just add actual zero-opacity text like "Hit counter. Number: n" that screen-readers can recite.
+
+* [#3](https://github.com/joshwcomeau/react-retro-hit-counter/issues/3) - Tests! I have very few tests, none on the component itself. This should change.
+
+* [#4](https://github.com/joshwcomeau/react-retro-hit-counter/issues/4) - Build process could use some work, specifically making it easier to work on the demo.
+
+* Additional flourishes. Transitions right now are just a simple CSS transition, and they're the only animation. Possibly this is good enough and anything else would just be fluff... but I'm curious if we can do anything else to make it more interesting?
+
+To set up locally, simply clone and run `yarn` or `npm i`. Then, run `yarn storybook` to get an interactive sandbox. Add stories as needed to test the contribution.
+
+There's also a demo app, which offers far greater parameter control. You can `cd` into `/demo`, run `yarn` to install the demo dependencies, and then `yarn start` to run the demo. From the parent directory, whenever you `yarn build`, it updates the demo dependency.
