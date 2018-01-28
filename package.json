@@ -2,7 +2,7 @@
   "name": "react-retro-hit-counter",
   "author": "Josh Comeau <joshwcomeau@gmail.com>",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Go back in time with this retro 90's hit counter.",
   "main": "dist/react-retro-hit-counter.cjs.js",
   "module": "dist/react-retro-hit-counter.es.js",
