@@ -8,11 +8,11 @@ Remember when the web was this quirky place full of "Under Construction" clipart
 
 Relive your youth with this straight-outta-geocities hit counter. If you have a page on the Information SuperHighway, slap this bad boy on it and impress all your friends.
 
-* Retro 90s aesthetic
-* Highly customizable
-* Includes optional skeumorphic border, and soft glow.
-* Generated on-the-fly with SVG and Canvas. No images, totally scalable.
-* Tiny! <3kb gzip.
+* 💾 Retro 90s aesthetic
+* ⚙️ Highly customizable
+* 🔲 Includes optional skeumorphic border, and soft glow.
+* 🔨 Generated on-the-fly with SVG and Canvas. No images, totally scalable.
+* ⚡️ Tiny! <3kb gzip.
 
 > Easily the best React counter you'll find anywhere on Altavista.
 
