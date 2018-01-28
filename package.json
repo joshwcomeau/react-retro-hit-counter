@@ -2,14 +2,15 @@
   "name": "react-retro-hit-counter",
   "author": "Josh Comeau <joshwcomeau@gmail.com>",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Go back in time with this retro 90's hit counter.",
   "main": "dist/react-retro-hit-counter.cjs.js",
   "module": "dist/react-retro-hit-counter.es.js",
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c && npm run copy-to-demo",
-    "copy-to-demo": "rm -rf ./demo/node_modules/react-retro-hit-counter/dist && cp -r ./dist ./demo/node_modules/react-retro-hit-counter/dist",
+    "copy-to-demo":
+      "rm -rf ./demo/node_modules/react-retro-hit-counter/dist && cp -r ./dist ./demo/node_modules/react-retro-hit-counter/dist",
     "flow": "flow",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
@@ -47,8 +48,5 @@
     "react-dom": ">15.3 || 16.x"
   },
   "dependencies": {},
-  "keywords": [
-    "react",
-    "react-dom"
-  ]
+  "keywords": ["react", "react-dom"]
 }
