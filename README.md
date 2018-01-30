@@ -4,12 +4,14 @@
 
 [![npm](https://img.shields.io/npm/v/react-retro-hit-counter.svg)]() [![GitHub code size in bytes](http://img.badgesize.io/http://tiny.cc/9t4mqy?compression=gzip)]() [![npm](https://img.shields.io/npm/l/react-retro-hit-counter.svg)]()
 
-Remember when the web was this quirky place full of "Under Construction" clipart, guestbooks, web rings, and animated GIF backgrounds?
+Remember when the web was this quirky place full of "Under Construction" clipart, guestbooks, and web rings? The time when animated GIFs were used for _everything_ - background images, cursors, nothing was off-limits. The time before we learned that [BonziBuddy](https://upload.wikimedia.org/wikipedia/en/9/9d/Bonzi_Buddy.png) was actually malware.
+
+Sometimes I miss the 90s web. This is a small gesture to help share some of that nostalgia.
 
 Relive your youth with this straight-outta-geocities hit counter. If you have a page on the Information SuperHighway, slap this bad boy on it and impress all your friends.
 
 * 💾 Retro 90s aesthetic
-* ⚙️ Highly customizable
+* ⚙️ Highly [customizable](https://joshwcomeau.github.io/react-retro-hit-counter/)
 * 🔲 Includes optional skeumorphic border, and soft glow.
 * 🔨 Generated on-the-fly with SVG and Canvas. No images, totally scalable.
 * ⚡️ Tiny! <3kb gzip.
@@ -22,9 +24,13 @@ Relive your youth with this straight-outta-geocities hit counter. If you have a 
 
 Yes! It's a real thing.
 
+**» [Try the demo!](https://joshwcomeau.github.io/react-retro-hit-counter/) 🎉**
+
 ### Does this actually track hits?
 
-No. This is just a presentational component; bring-your-own-tracking-system. If you need one, I recommend [micro-analytics](https://github.com/micro-analytics/micro-analytics-cli).
+No. This is just a presentational component, you need your own tracking system.
+
+I recommend [micro-analytics](https://github.com/micro-analytics/micro-analytics-cli). Super easy to set up and use.
 
 ### Compatibility
 
